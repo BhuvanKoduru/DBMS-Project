@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from flask import Flask, render_template, request , redirect
 path="C:/Users/Nandan Holla K/Documents/GitHub/DBMS-PROJECT"
   
@@ -20,6 +19,9 @@ def getteacher():
 @app.route("/admin")
 def getadmin():
     return render_template("admin.html")
+@app.route("/csbs3",methods=["POST"])
+def hello():
+    return "Hello World"
 
 # @app.route('/csbs3', methods = ['POST'])
 # def home():
