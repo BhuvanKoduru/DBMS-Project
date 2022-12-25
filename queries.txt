@@ -30,10 +30,13 @@ Individual tables:
 5. room_allocation
     1. select 1100_1150 from room_allocation where Day="MON" and Sem=5;
     2. select tt.1100_1150, r.1100_1150 from room_allocation r, is_tt tt where r.Day="MON" and r.Sem=5;
-    3.
 
 6. rooms
-    1. select
+    1. select * from rooms where Room_Type="T";
+    2. select * from rooms where Room_Type="L";
+    3. select count(Room_Name) from rooms where type="T" group by Room_Type;
+
+
 
 
      
