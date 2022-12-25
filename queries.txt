@@ -1,0 +1,39 @@
+Individual tables:
+1: faculty table:
+    1. select * from faculty (show all faculty);
+    2. select * from faculty where Designation = "fill designation";
+    3. select * from faculty where Name = "fill name";
+    4. select * from faculty where id = "fill id";
+
+2. faculty_allocation:
+    1. select Name from faculty_allocation where Sem=sem_no;
+    2. select Name from faculty_allocation where Subject_code=sub_code; (who teaches which subject)
+    3. select count(Sem) from faculty_allocation where Name = "name" group by Name; (total number of subjects taught by a faculty)
+    4. select Name from faculty_allocation group by Name where count(Sem)>1;
+    5. select Name, count(Sem) from faculty_allocation group by Name;
+    6.select count(Subject_code), Sem from faculty_allocation group by Sem;
+
+3. is_desc
+    1. select Sub_Title from is_desc where sem=sem_number;
+    2. select Sub_Title from is_desc where Sub_Code=sub_code;
+    3. select Sub_Title from is_desc where Sem=Sem_no and Credits=Credits_number;
+    4. select f.Name, i.Sub_Title from faculty_allocation f, is_desc i where f.Subject_code = i.Sub_code and i.Sem=Sem_number;
+    5. select Sub_Title from is_desc where (contact_hours - Credits = 1);
+    6. select f.name, Sub_Title from faculty_allocation f, is_desc i where i.Sub_Code = f.Subject_code and i.Sub_Title = "Title";
+
+4. is_tt
+    1. select * from is_tt where Day="day" and Sem="5";
+    2. select Sub_Title from is_desc where Sub_Code=(select 230_330 from is_tt where Day="MON" and Sem=5);
+    3. select Name from faculty_allocation where Subject_Code=(select 230_330 from is_tt where Day="MON" and Sem=5);
+    4. select Sub_Title from is_desc where Sub_Code=(select 230_330 from is_tt where Day="MON");
+
+5. room_allocation
+    1. select 1100_1150 from room_allocation where Day="MON" and Sem=5;
+    2. select tt.1100_1150, r.1100_1150 from room_allocation r, is_tt tt where r.Day="MON" and r.Sem=5;
+    3.
+
+6. rooms
+    1. select
+
+
+     
