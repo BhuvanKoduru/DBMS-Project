@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TT ADD</title>
+	<title>Add faculty</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -12,7 +12,9 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 
      <style>
-
+:root {
+    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+  }
       nav {
         font-family: sans-serif;
         }
@@ -28,7 +30,7 @@
 
 }
 body{
-    background-color:black;
+    background-color: #111;
 }
 
 html{
@@ -52,14 +54,21 @@ form {
 	margin-left: 18%;
 	margin-right: 21%;
 
+
 }
 
 form fieldset{
-	padding: 40px;
-	border-width: 20px;
-	border-style: groove;
-    border-color: #dd2476;
-	background-color: #000;
+
+    border: 15px solid;
+    border-image-slice: 1;
+    padding:40px;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    background: #222;
+
 }
 
 fieldset h1 {
@@ -86,79 +95,30 @@ fieldset input{
 fieldset input:focus{
 	color: #000;
 }
-fieldset button
-{
-	margin-left: 60px;
-	color: #fff;
-	background-color: #dd2476;
-	border-radius: 3px;
-	padding: 13px 39px;
-	text-align: center;
-	letter-spacing: 0.9px;
-	text-decoration: none;
-	margin-right: 10px;
-	line-height: 26px;
-	font-size: 16px;
-	box-shadow: 0px 1px 3px 0px #dd2476;
-	right: 100px;
-	margin-top: 15px;
-}
 
-.dropdown-check-list {
-  display: inline-block;
-}
-.dropdown-check-list .anchor {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px 50px 5px 10px;
-  border: 1px solid #ccc;
-}
-.dropdown-check-list .anchor:after {
-  position: absolute;
-  content: "";
-  border-left: 2px solid black;
-  border-top: 2px solid black;
-  padding: 5px;
-  right: 10px;
-  top: 20%;
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
-.dropdown-check-list .anchor:active:after {
-  right: 8px;
-  top: 21%;
-}
-.dropdown-check-list ul.items {
-  padding: 2px;
-  display: none;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-.dropdown-check-list ul.items li {
-  list-style: none;
-}
+.btn, #lname, #fname{
+    border: 5px solid;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: #fff !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: underline;
+    transition: all .4s ease;
+    margin:10px;
+    padding:10px;
+    box-shadow: #222 1px 0 10px;
 
-.submit{
-	margin-left: 60px;
-	color:#dd2476;
-	background-color: white;
-	border-radius: 3px;
-	padding: 13px 39px;
-	text-align: center;
-	letter-spacing: 0.9px;
-	text-decoration: none;
-	margin-right: 10px;
-	line-height: 26px;
-	font-size: 16px;
-	box-shadow: 0px 1px 3px 0px #5a5a5a;
-	right: 100px;
-	margin-top: 15px;
-}
+  }
+  
+  .btn:hover, .btn:focus {
+        background: var(--gradient) !important;
+    -webkit-background-clip: none !important;
+    -webkit-text-fill-color: #fff !important;
+    border: 5px solid #fff !important; 
+    box-shadow: #222 1px 0 10px;
+    text-decoration: underline;
+  }
 
 #link_to_edit{
     padding-left: 45px;
@@ -171,7 +131,7 @@ fieldset button
 	border-style: none;
 	border-color:black;
 	box-shadow: 0px 0px 0px 0px black;
-	background-color:black;
+	background-color:#222;
 }
 
     </style>
@@ -189,14 +149,12 @@ fieldset button
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admindash' %}">Get Started</a>
+                        <a class="nav-link" href="{% url 'addInstructors' %}">Add Teachers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'addInstructors' %}">Add Teachers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
+                        <a class="nav-link active" href="{% url 'addRooms' %}">Add Rooms</a>
                     </li>
                     <li class="nav-item">
 		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
@@ -252,23 +210,31 @@ fieldset button
 
         <br><br>
         <br><br>
-       <h2 style="color: white;">Add Teachers</h2>
+       <h2 style="color: white;">Add Faculty</h2>
        <br><br>
-        <h5 style="color:white">Please use the following form to enter the Teachers into the system for timetable generation</h5>
-<form method="post">
-
+        <h5 style="color:white">Please use the following form to enter the faculty into the system for timetable generation</h5>
+<form method="post" action="#">
     <br><br>
 	<fieldset>
-		<div class="tabcontent" id="new" style="text-align: center;">
-		<a href="{% url 'editcourse' %}"><h1 class="submit" onclick="openPage('edit')">View / Edit Teachers</h1></a>
+        <div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
+            <div>
+            <label for="fname" style="padding:0; margin:0;width:fit-content;">
+                First name:
+            </label>
+            <input type="text" id="fname" style="text-decoration:none;"> <br>
+        </div>
+        <div>
+            <label for="lname" style="padding:0; margin:0; width:fit-content;">
+                Last name:
+            </label>
+            <input type="text" id="lname" style="text-decoration:none;"><br>
+            </div>
+
+		<a href="{% url 'editcourse' %}"><h1 class="btn" onclick="openPage('edit')">View / Edit Faculty</h1></a>
+        <input type="submit" class="submit btn" value="Add teacher">
         <br>
-        <a href="file:///D:/DBMS%20PROJECT/DBMS-Project/templates/addcourses.html"><h1 class="submit">Add Teachers</h1></a>
-        <br>
-        <a href=""><input type="submit" class="submit"></a>
-     
-            
         </div>
 	</fieldset>
-</form>
+    </form>
 </body>
 </html>
