@@ -96,7 +96,7 @@ fieldset input:focus{
 	color: #000;
 }
 
-.btn {
+.btn, #ctiming,#cname,#week {
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -212,18 +212,34 @@ fieldset input:focus{
        <h2 style="color: white;">Define Timings</h2>
        <br><br>
         <h5 style="color:white">Please use the following form to choose the timings for each class for the time table</h5>
-<form method="post">
-
-    <br><br>
-	<fieldset>
-        <div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
-            <a href="{% url 'editcourse' %}"><h1 class="submit btn" onclick="openPage('edit')">Add timings</h1></a>
-            <br>
-            <a href="file:///D:/DBMS%20PROJECT/DBMS-Project/templates/addcourses.html"><h1 class="submit btn">View timings</h1></a>
-            <br>
-            <a href=""><input type="submit" class="submit btn"></a>     
-            </div>
-	</fieldset>
-</form>
+        <form method="post" action="#">
+            <br><br>
+            <fieldset>
+                <div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
+                    <div>
+                    <label for="cname" style="padding:0; margin:10px;width:fit-content;">
+                        Class name:
+                    </label>
+                    <input type="text" id="cname" style="text-decoration:none;"> <br>
+                </div>
+                <div>
+                    <label for="ctiming" style="padding:0; margin:28px; width:fit-content;">
+                        Timing:
+                    </label>
+                    <input type="text" id="ctiming" style="text-decoration:none;"><br>
+                </div>
+                <div>
+                    <label for="week" style="padding:0; margin:38px; width:fit-content;">
+                        Day:
+                    </label>
+                    <input type="text" id="week" style="text-decoration:none;"><br>
+                </div>
+        
+                <a href="room_list.html"><h1 class="btn" onclick="openPage('edit')">View / Edit classes</h1></a>
+                <input type="submit" class="submit btn" value="Add class">
+                <br>
+                </div>
+            </fieldset>
+            </form>
 </body>
 </html>

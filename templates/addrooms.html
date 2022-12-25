@@ -96,7 +96,7 @@ fieldset input:focus{
 	color: #000;
 }
 
-.btn {
+.btn, #rname, #rtype{
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -212,19 +212,29 @@ fieldset input:focus{
         <br><br>
        <h2 style="color: white;">Add Rooms</h2>
        <br><br>
-        <h5 style="color:white">Please use the following form to enter the Rooms into the system for timetable generation</h5>
-<form method="post">
-
+        <h5 style="color:white">Please use the following form to enter the rooms into the system for timetable generation</h5>
+<form method="post" action="#">
     <br><br>
 	<fieldset>
-		<div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
-		<a href="{% url 'editcourse' %}"><h1 class="submit btn" onclick="openPage('edit')">View / Edit Rooms</h1></a>
+        <div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
+            <div>
+            <label for="rname" style="padding:0; margin:20px;width:fit-content;">
+                Room name:
+            </label>
+            <input type="text" id="rname" style="text-decoration:none;"> <br>
+        </div>
+        <div>
+            <label for="rtype" style="padding:0; margin:0; width:fit-content;">
+                Room type (T/L):
+            </label>
+            <input type="text" id="rtype" style="text-decoration:none;"><br>
+            </div>
+
+		<a href="room_list.html"><h1 class="btn" onclick="openPage('edit')">View / Edit rooms</h1></a>
+        <input type="submit" class="submit btn" value="Add room">
         <br>
-        <a href="file:///D:/DBMS%20PROJECT/DBMS-Project/templates/addcourses.html"><h1 class="submit btn">Add Rooms</h1></a>
-        <br>
-        <a href=""><input type="submit" class="submit btn"></a>     
         </div>
 	</fieldset>
-</form>
+    </form>
 </body>
 </html>
