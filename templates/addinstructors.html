@@ -151,36 +151,36 @@ fieldset input:focus{
                     <ul class="navbar-nav ml-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addInstructors' %}">Add Teachers</a>
+                        <a class="nav-link" href={{ addInstructors }}>Add Teachers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'addRooms' %}">Add Rooms</a>
+                        <a class="nav-link active" href={{ addRooms }}>Add Rooms</a>
                     </li>
                     <li class="nav-item">
-		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
+		                <a class="nav-link" href={{ addTimings }}>Add Timings</a>
 		            </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
+                        <a class="nav-link" href={{ addCourses }}>Add Courses</a>
                     </li>
                     <li class="nav-item">
-			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
+			            <a class="nav-link" href={{ addDepts }}>Add Departments</a>
 		            </li>
                     <li class="nav-item">
-			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
+			            <a class="nav-link" href={{ addSections }}>Add Sections</a>
 		            </li>
                     <li class="nav-item">
-			            <a class="nav-link" href="{% url 'generate' %}">Generate Timetable</a>
+			            <a class="nav-link" href={{ generate }}>Generate Timetable</a>
 		            </li>
                     <li class="nav-item active">
 			            <a class="nav-link">|</a>
 		            </li>
                     <li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ user.first_name }}</a>
+		                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ n }}</a>
 			            <div class="dropdown-menu" aria-labelledby="dropdown03">
-			                <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
-				            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+			                <a class="dropdown-item" href={{ password_change }}>Change Password</a>
+				            <a class="dropdown-item" href={{ logout }}>Logout</a>
 			            </div>
-		            </li>
+		            </li> 
                     </ul>
                 <script type="text/javascript">
 
