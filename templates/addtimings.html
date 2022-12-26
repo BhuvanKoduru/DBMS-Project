@@ -226,13 +226,33 @@ fieldset input:focus{
                     <label for="ctiming" style="padding:0; margin:28px; width:fit-content;">
                         Timing:
                     </label>
-                    <input type="text" id="ctiming" style="text-decoration:none;"><br>
+                    <select name="Timing" id="ctiming">
+                        <option value="" disabled selected style="color:grey;">Select Timing</option>
+                        <option value="c1">7:30-8:30</option>
+                        <option value="c2">8:30-9:30</option>
+                        <option value="c3">9:30-10:30</option>
+                        <option value="c4">11:00-11:50</option>
+                        <option value="c5">11:50-12:40</option>
+                        <option value="c6">12:40-1:30</option>
+                        <option value="c7">2:30-3:30</option>
+                        <option value="c8">3:30-4:30</option>
+                        <option value="c9">4:30-5:30</option>
+
+                      </select><br>
                 </div>
                 <div>
                     <label for="week" style="padding:0; margin:38px; width:fit-content;">
                         Day:
                     </label>
-                    <input type="text" id="week" style="text-decoration:none;"><br>
+                    <select name="day" id="week">
+                        <option value="" disabled selected style="color:grey;">Select Day</option>
+                        <option value="Mon">Monday</option>
+                        <option value="Tue">Tuesday</option>
+                        <option value="Wed">Wednesday</option>
+                        <option value="Thu">Thursday</option>
+                        <option value="Fri">Friday</option>
+                        <option value="Sat">Saturday</option>
+                      </select><br>
                 </div>
         
                 <a href="room_list.html"><h1 class="btn" onclick="openPage('edit')">View / Edit classes</h1></a>

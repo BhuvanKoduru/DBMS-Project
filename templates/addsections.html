@@ -96,7 +96,7 @@ fieldset input:focus{
 	color: #000;
 }
 
-.btn {
+.btn,#course, #sec {
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -218,11 +218,20 @@ fieldset input:focus{
     <br><br>
 	<fieldset>
 		<div class="tabcontent justify-content-center text-align-center" id="new" style="text-align: center;">
+            <div>
+                <label for="sec" style="padding:0; margin:0;width:fit-content;">
+                   Section :
+                </label>
+                <input type="text" id="sec" style="text-decoration:none;"> <br>
+            </div>
+            <div>
+                <label for="course" style="padding:0; margin:0;width:fit-content;">
+                   Courses :
+                </label>
+                <input type="text" id="course" style="text-decoration:none;"> <br>
+            </div>
 		<a href="{% url 'editcourse' %}"><h1 class="submit btn" onclick="openPage('edit')">View / Edit sections</h1></a>
-        <br>
-        <a href="file:///D:/DBMS%20PROJECT/DBMS-Project/templates/addcourses.html"><h1 class="submit btn">Add sections</h1></a>
-        <br>
-        <a href=""><input type="submit" class="submit btn"></a>     
+        <a href=""><input type="submit" class="submit btn" value="Add Section"></a>     
         </div>
 	</fieldset>
 </form>

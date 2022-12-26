@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Add rooms</title>
+	<title>Add Instructors</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -96,7 +96,7 @@ fieldset input:focus{
 	color: #000;
 }
 
-.btn, #lname, #fname{
+.btn, #lname, #fname, #des{
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -229,7 +229,17 @@ fieldset input:focus{
             </label>
             <input type="text" id="lname" style="text-decoration:none;"><br>
             </div>
-
+            <div>
+                <label for="des" style="padding:0; margin:0; width:fit-content;">
+                    Designation:
+                </label>
+                <select name="cars" id="des">
+                    <option value="" disabled selected style="color:grey;">Select Designation</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Assistant Professor">Assistant Professor</option>
+                    <option value="Associate Professor">Associate Professor</option>
+                  </select><br>
+            </div>
 		<a href="teacher_list.html"><h1 class="btn" onclick="openPage('edit')">View / Edit Faculty</h1></a>
         <input type="submit" class="submit btn" value="Add teacher">
         <br>
