@@ -24,20 +24,32 @@ def hello():
     return "Hello World"
 @app.route("/addinstructors",methods=["GET"])
 def addcourses():
-    instructors='#'
-    rooms='#'
-    timings='#'
-    courses='#'
-    depts='#'
-    sections='#'
-    gene='#'
-    password='#'
-    log='#'
-    return render_template("addinstructors.html",addInstructors=instructors,addRooms=rooms,addTimings=timings,addCourses=courses,addDepts=depts,addSections=sections,generate=gene,password_change=password,logout=log,n="Nandan")
-
-# @app.route('/csbs3', methods = ['POST'])
-# def home():
-#     data = "hello world"
-#     return jsonify({'data': data})
+    return render_template("addinstructors.html",n="Nandan")
+    # instructors='#'
+    # rooms='#'
+    # timings='#'
+    # courses='#'
+    # depts='#'
+    # sections='#'
+    # gene='#'
+    # password='#'
+    # log='#'
+    # return render_template("addinstructors.html",addInstructors=instructors,addRooms=rooms,addTimings=timings,addCourses=courses,addDepts=depts,addSections=sections,generate=gene,password_change=password,logout=log,n="Nandan")
+@app.route("/addrooms",methods=["GET"])
+def getrooms():
+    return render_template("addrooms.html",n="Nandan")
+@app.route("/addcourses",methods=["GET"])
+def getcourses():
+    return render_template("addcourses.html",n="Nandan")   
+@app.route("/addtimes",methods=["GET"])
+def gettimes():
+    return render_template("addtimings.html",n="Nandan")
+@app.route("/addsect",methods=["GET"])
+def getsect():
+    return render_template("addsections.html",n="Nandan")
+@app.route('/csbs3', methods = ['POST'])
+def home():
+    data = "hello world"
+    return jsonify({'data': data})
 if __name__ == '__main__':
     app.run(debug = True)
