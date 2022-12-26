@@ -1,4 +1,48 @@
+Queries:
+1. Show all the available faculty
+2. Show all faculty belonging to a particular designation
+3. Show the Faculty_id and designation of a particular faculty
+4. Delete faculty on the basis of id
+5. Show the faculty of each semester
+6. Find who teaches which subject on the basis of subject code.
+7. Find the total number of subjects taught by a faculty member.
+8. Display faculty who take more than one subject.
+9. Display name and number of subjects taught by the faculty.
+10. Remove a teacher on the basis of their id.
+11. Remove a teacher on the basis of their name.
+12. Show the name of the faculty having certain id.
+13. Show the id of the faculty having certain name.
+14. Delete faculty on the basis of name.
+15. Display all the subject titles of a particular semester.
+16. Display all the subject titles of all semesters.
+17. Show the name of the subject given the subject code.
+18. Show all the subjects having a certain amount of credits.
+19. Show faculty name and their corresponding subjects for a particular semester.
+20. Show all the subjects which require tutorial classes.
+21. Show the faculty name and their corresponding subject title for a given subject code.
+22. Delete a subject by its subject code.
+23. Delete a subject by its subject name.
+24. Delete subjects taught by a particular faculty member, referenced by their faculty id.
+25. Show the timetable of a day of a particular semester.
+26. Show the faculty name of a class at a given timing on a particular day.
+27. Show the subject name of a class at a given timing on a particular day.
+28. Show which room a class is taking place in on a given day for a particular sem at a given time.
+29. Show the subject code and room number for a particular day and semester and timing.
+30. Show all the rooms of the type Theory.
+31. Show all the rooms of the type Practical.
+32. Display the count of the rooms of the type Theory.
+33. Alter the faculty for a particular subject code.
+34. Alter the time slot for a particular subject to a different time on the same day or a different day.
+35. Display total number of credits for a particular semester.
+36. Add or remove tutorial classes from the timetable.
+37. Find total credits handled by a particular teacher.
+38. List all teachers who handle a particular amount of credits.
+39. Alter the room of a class for a particular time slot.
+40. Edit the time table only for a particular isolated day.
+
+
 Individual tables:
+
 1: faculty table:
     1. select * from faculty (show all faculty);
     2. select * from faculty where Designation = "fill designation";
@@ -37,35 +81,11 @@ Individual tables:
 
 5. room_allocation
     1. select 1100_1150 from room_allocation where Day="MON" and Sem=5;
-    2. select tt.1100_1150, r.1100_1150 from room_allocation r, is_tt tt where r.Day="MON" and r.Sem=5;
+    2. select tt.1100_1150, r.1100_1150 from room_allocation r, is_tt tt where r.Day="MON" and r.Sem=5 limit 1;
 
 6. rooms
     1. select * from rooms where Room_Type="T";
     2. select * from rooms where Room_Type="L";
     3. select count(Room_Name) from rooms where type="T" group by Room_Type;
-
-
-Queries:
-1. Show all the available faculty
-2. Show all faculty belonging to a particular designation
-3. Show the Faculty_id and designation of a particular faculty
-4. Delete faculty on the basis of id
-5. Show the faculty of each semester
-6. Find who teaches which subject on the basis of subject code.
-7. Find the total number of subjects taught by a faculty member.
-8. Display faculty who take more than one subject.
-9. Display name and number of subjects taught by the faculty.
-10. Remove a teacher on the basis of their id.
-11. Remove a teacher on the basis of their name.
-12. Show the name of the faculty having certain id.
-13. Show the id of the faculty having certain name.
-14. Delete faculty on the basis of name.
-15. Display all the subject titles of a particular semester.
-16. Display all the subject titles of all semesters.
-17. Show the name of the subject given the subject code.
-18. Show all the subjects having a certain amount of credits.
-19. Show faculty name and their corresponding subjects for a particular semester.
-20. Show all the subjects which require tutorial classes.
-21. 
 
 
