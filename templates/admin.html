@@ -40,7 +40,7 @@ nav {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                  li class="nav-item">
+                  <li class="nav-item">
                   <a class="nav-link active" href="/addinstructors">Add Teachers</a>
               </li>
               <li class="nav-item">
@@ -65,7 +65,7 @@ nav {
                   <a class="nav-link">|</a>
               </li>
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ n }}</a>
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome,{{ n }}</a>
                   <div class="dropdown-menu" aria-labelledby="dropdown03">
                       <a class="dropdown-item" href="#">Change Password</a>
                       <a class="dropdown-item" href="#">Logout</a>
@@ -80,12 +80,11 @@ nav {
 
   <div class="jumbotron">
     <div class="container">
-      <h1>{{n}}</h1>
-      <h1 class="display-4">Hello {{ user.first_name }}! Lets Get Started with Time Table Generator</h1>
+      <h1 class="display-4">Hello {{ n }}! Lets Get Started with Time Table Generator</h1>
       <p class="pinside">Welcome to time table generator, a timetable management system for our college to schedule the department timetable.
         Get started by referring to the flow of the system below or Contact Us with any queries or difficulties.
       </p>
-      <p><a class="btn btn-primary btn-lg bg-dark" href="{% url 'addInstructors' %}" role="button">Get Started &raquo;</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary btn-lg bg-dark" href="{% url 'contact' %}" role="button">Contact Us &raquo;</a></p>
+      <p><a class="btn btn-primary btn-lg bg-dark" href="/addinstructors" role="button">Get Started &raquo;</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary btn-lg bg-dark" href="#" role="button">Contact Us &raquo;</a></p>
     </div>
   </div>
 

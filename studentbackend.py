@@ -18,7 +18,7 @@ def getteacher():
     return render_template("teacher.html")
 @app.route("/admin")
 def getadmin():
-    return render_template("admin.html")
+    return render_template("admin.html",n="Nandan")
 @app.route("/csbs3",methods=["POST"])
 def hello():
     return "Hello World"
@@ -47,6 +47,9 @@ def gettimes():
 @app.route("/addsect",methods=["GET"])
 def getsect():
     return render_template("addsections.html",n="Nandan")
+@app.route("/admin",methods=["GET"])
+def admin():
+    return render_template("admin.html",n="Nandan")
 @app.route('/csbs3', methods = ['POST'])
 def home():
     data = "hello world"
