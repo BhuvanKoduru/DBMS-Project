@@ -26,11 +26,19 @@ Queries:
 25. Show the timetable of a day of a particular semester.
 26. Show the faculty name of a class at a given timing on a particular day.
 27. Show the subject name of a class at a given timing on a particular day.
-28.Show which room a class is taking place in on a given day for a particular sem at a given time.
+28. Show which room a class is taking place in on a given day for a particular sem at a given time.
 29. Show the subject code and room number for a particular day and semester and timing.
-30.Show all the rooms of the type Theory.
+30. Show all the rooms of the type Theory.
 31. Show all the rooms of the type Practical.
 32. Display the count of the rooms of the type Theory.
+33. Alter the faculty for a particular subject code.
+34. Alter the time slot for a particular subject to a different time on the same day or a different day.
+35. Display total number of credits for a particular semester.
+36. Add or remove tutorial classes from the timetable.
+37. Find total credits handled by a particular teacher.
+38. List all teachers who handle a particular amount of credits.
+39. Alter the room of a class for a particular time slot.
+40. Edit the time table only for a particular isolated day.
 
 
 Individual tables:
