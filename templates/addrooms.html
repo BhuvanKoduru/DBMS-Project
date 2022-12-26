@@ -225,9 +225,13 @@ fieldset input:focus{
         </div>
         <div>
             <label for="rtype" style="padding:0; margin:0; width:fit-content;">
-                Room type (T/L):
+                Room type:
             </label>
-            <input type="text" id="rtype" style="text-decoration:none;"><br>
+            <select name="type" id="rtype" style="">
+                <option value="" disabled selected style="color:grey;">Select Room type</option>
+                <option value="T">Theory</option>
+                <option value="L">Lab</option>
+              </select><br>
             </div>
 
 		<a href="room_list.html"><h1 class="btn" onclick="openPage('edit')">View / Edit rooms</h1></a>
