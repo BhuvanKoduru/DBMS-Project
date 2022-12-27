@@ -78,13 +78,14 @@ class Department(models.Model):
         return self.courses
 
     def __str__(self):
-        return self.dept_name
-        
+        return f'{self.dept_name}'
+
 class MeetingTime(models.Model):
     pid = models.CharField(max_length=4, primary_key=True)
-    Dept = models.ManyToManyField(Department)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
+    Dept = models.ManyToManyField(Department,null=False)
+
     
 
     def __str__(self):
