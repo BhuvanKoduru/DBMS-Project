@@ -7,11 +7,18 @@ class RoomForm(ModelForm):
         model = Room
         labels = {
             "r_number": "Room ID",
-            "seating_capacity": "Capacity"
+            "seating_capacity": "Capacity",
+            "room_type":"Room Type"
+        }
+        widgets={
+            "r_number":forms.TextInput(),
+            "seating_capacity":forms.TextInput(),
+            "room_type":forms.Select()
         }
         fields = [
             'r_number',
-            'seating_capacity'
+            'seating_capacity',
+            'room_type'
         ]
 
 
@@ -20,11 +27,19 @@ class InstructorForm(ModelForm):
         model = Instructor
         labels = {
             "uid": "Teacher UID",
-            "name": "Full Name"
+            "name": "Full Name",
+            "Desig":"Designation"
+        }
+        widgets= {
+            'uid':forms.TextInput(),
+            'name':forms.TextInput(),
+            'Desig':forms.Select()
+            
         }
         fields = [
             'uid',
             'name',
+            'Desig'
         ]
 
 

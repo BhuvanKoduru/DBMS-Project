@@ -24,6 +24,15 @@ DAYS_OF_WEEK = (
     ('Friday', 'Friday'),
     ('Saturday', 'Saturday'),
 )
+DESIGNATIONS=(
+    ('Asst Prof','Asst Prof'),
+    ('Prof','Prof'),
+    ('Asso Prof','Asso Prof')
+)
+Room_Type=(
+    ('Theory','Theory'),
+    ('Lab','Lab')
+)
 
 POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
@@ -34,6 +43,7 @@ MUTATION_RATE = 0.1
 class Room(models.Model):
     r_number = models.CharField(max_length=6)
     seating_capacity = models.IntegerField(default=0)
+    room_type=models.CharField(max_length=25,choices=Room_Type,default='Theory')
 
     def __str__(self):
         return self.r_number
@@ -42,6 +52,8 @@ class Room(models.Model):
 class Instructor(models.Model):
     uid = models.CharField(max_length=6)
     name = models.CharField(max_length=25)
+    Desig = models.CharField(max_length=25,choices=DESIGNATIONS,default='Asst Prof')
+
 
     def __str__(self):
         return f'{self.uid} {self.name}'
