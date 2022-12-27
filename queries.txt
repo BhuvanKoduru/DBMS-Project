@@ -87,5 +87,3 @@ Individual tables:
     1. select * from rooms where Room_Type="T";
     2. select * from rooms where Room_Type="L";
     3. select count(Room_Name) from rooms where type="T" group by Room_Type;
-
-
