@@ -49,17 +49,20 @@ class MeetingTimeForm(ModelForm):
         fields = [
             'pid',
             'time',
-            'day'
+            'day',
+            'Dept'
         ]
         widgets = {
             'pid': forms.TextInput(),
             'time': forms.Select(),
             'day': forms.Select(),
+            'Dept':forms.Select()
         }
         labels = {
             "pid": "Meeting ID",
             "time": "Time",
-            "day": "Day of the Week"
+            "day": "Day of the Week",
+            "Dept":"Department"
         }
 
 
