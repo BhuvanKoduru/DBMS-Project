@@ -7,6 +7,8 @@ from django.db.models.signals import post_save, post_delete
 from datetime import timedelta, date
 
 time_slots = (
+    ('7:30 - 8:30', '7:30 - 8:30'),
+    ('8:30 - 9:30', '8:30 - 9:30'),
     ('9:30 - 10:30', '9:30 - 10:30'),
     ('10:30 - 11:30', '10:30 - 11:30'),
     ('11:30 - 12:30', '11:30 - 12:30'),
@@ -65,6 +67,7 @@ class Course(models.Model):
     max_numb_students = models.CharField(max_length=65)
     instructors = models.ManyToManyField(Instructor)
 
+
     def __str__(self):
         return f'{self.course_number} {self.course_name}'
 
@@ -84,15 +87,11 @@ class MeetingTime(models.Model):
     pid = models.CharField(max_length=4, primary_key=True)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
-    Dept = models.ManyToManyField(Department,null=False)
 
     
 
     def __str__(self):
         return f'{self.pid} {self.day} {self.time}'
-
-
-
 
 
 class Section(models.Model):

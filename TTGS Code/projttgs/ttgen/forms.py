@@ -65,6 +65,7 @@ class DepartmentForm(ModelForm):
             "dept_name": "Department Name",
             "courses": "Corresponding Courses"
         }
+
 class MeetingTimeForm(ModelForm):
     class Meta:
         model = MeetingTime
@@ -72,19 +73,19 @@ class MeetingTimeForm(ModelForm):
             'pid',
             'time',
             'day',
-            'Dept'
+            
         ]
         widgets = {
             'pid': forms.TextInput(),
             'time': forms.Select(),
             'day': forms.Select(),
-            'Dept':forms.TextInput()
+        
         }
         labels = {
             "pid": "Meeting ID",
             "time": "Time",
             "day": "Day of the Week",
-            "Dept":"Department"
+           
         }
 
 class SectionForm(ModelForm):

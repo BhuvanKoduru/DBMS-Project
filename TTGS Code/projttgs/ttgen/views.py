@@ -80,7 +80,6 @@ class Schedule:
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
-                        print(crs_inst)
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
                         self._classes.append(newClass)
 
@@ -95,7 +94,6 @@ class Schedule:
                 self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
-                    print(classes[j].section_id)
                     if (classes[i].meeting_time == classes[j].meeting_time) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
                         if classes[i].room == classes[j].room:
@@ -222,6 +220,9 @@ def timetable(request):
         population = geneticAlgorithm.evolve(population)
         population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
         schedule = population.get_schedules()[0].get_classes()
+
+
+    #print(schedule)
 
     return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
                                               'times': MeetingTime.objects.all()})
