@@ -94,12 +94,26 @@ class Schedule:
                 self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
-                    if (classes[i].meeting_time == classes[j].meeting_time) and \
+                    if (classes[i].meeting_time.pid == classes[j].meeting_time.pid) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
+                        #print(classes[j].section_id)
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
                         if classes[i].instructor == classes[j].instructor:
                             self._numberOfConflicts += 1
+                        if classes[i].course!=classes[j].course:
+                            self._numberOfConflicts += 1
+                    #else:
+                     #   print(classes[i].meeting_time.day,classes[j].meeting_time.day)
+                       # print(classes[i].instructor.name,classes[j].instructor.name)
+
+                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
+                        self._numberOfConflicts += 1
+                        #print(classes[j].instructor.name)
+                    
+
+                        
+                    
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
 
@@ -169,6 +183,8 @@ class Class:
         self.meeting_time = None
         self.room = None
         self.section = section
+
+        #hello ekfewifeiofoefi
 
     def get_id(self): return self.section_id
 
