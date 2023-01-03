@@ -90,8 +90,8 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
-                self._numberOfConflicts += 1
+            #if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
+               # self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
                     if (classes[i].meeting_time.pid == classes[j].meeting_time.pid) and \

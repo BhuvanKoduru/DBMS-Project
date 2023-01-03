@@ -44,11 +44,13 @@ MUTATION_RATE = 0.1
 
 class Room(models.Model):
     r_number = models.CharField(max_length=6)
-    seating_capacity = models.IntegerField(default=0)
+    seating_capacity = models.IntegerField(default=60)
     room_type=models.CharField(max_length=25,choices=Room_Type,default='Theory')
 
     def __str__(self):
         return self.r_number
+    class Meta:
+        db_table="Room"
 
 
 class Instructor(models.Model):
@@ -60,17 +62,21 @@ class Instructor(models.Model):
     def __str__(self):
         return f'{self.uid} {self.name}'
 
+    class Meta:
+        db_table="Faculty"
 
 class Course(models.Model):
     course_number = models.CharField(max_length=5, primary_key=True)
     course_name = models.CharField(max_length=40)
-    max_numb_students = models.CharField(max_length=65)
+    max_numb_students = models.IntegerField(default=60)
     instructors = models.ManyToManyField(Instructor)
 
 
     def __str__(self):
         return f'{self.course_number} {self.course_name}'
 
+    class Meta:
+        db_table="Courses"
 
 class Department(models.Model):
     dept_name = models.CharField(max_length=50)
@@ -82,6 +88,9 @@ class Department(models.Model):
 
     def __str__(self):
         return f'{self.dept_name}'
+    
+    class Meta:
+        db_table="Department"
 
 class MeetingTime(models.Model):
     pid = models.CharField(max_length=4, primary_key=True)
@@ -92,6 +101,9 @@ class MeetingTime(models.Model):
 
     def __str__(self):
         return f'{self.pid} {self.day} {self.time}'
+    
+    class Meta:
+        db_table="Class Timing"
 
 
 class Section(models.Model):
@@ -117,3 +129,6 @@ class Section(models.Model):
         section = Section.objects.get(pk=self.section_id)
         section.instructor = instructor
         section.save()
+
+    class Meta:
+        db_table="Section"

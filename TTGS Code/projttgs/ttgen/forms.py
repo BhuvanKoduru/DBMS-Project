@@ -7,17 +7,17 @@ class RoomForm(ModelForm):
         model = Room
         labels = {
             "r_number": "Room ID",
-            "seating_capacity": "Capacity",
+           # "seating_capacity": "Capacity",
             "room_type":"Room Type"
         }
         widgets={
             "r_number":forms.TextInput(),
-            "seating_capacity":forms.TextInput(),
+            #"seating_capacity":forms.TextInput(),
             "room_type":forms.Select()
         }
         fields = [
             'r_number',
-            'seating_capacity',
+            #'seating_capacity',
             'room_type'
         ]
 
@@ -49,11 +49,13 @@ class InstructorForm(ModelForm):
 class CourseForm(ModelForm):
     class Meta:
         model = Course
-        fields = ['course_number', 'course_name', 'max_numb_students', 'instructors']
+        fields = ['course_number', 'course_name', \
+        #'max_numb_students', 
+        'instructors']
         labels = {
             "course_number": "Course ID",
             "course_name": "Course Name",
-            "max_numb_students": "Course Capacity",
+            #"max_numb_students": "Course Capacity",
             "instructors": "Course Teachers"
         }
 
