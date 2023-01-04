@@ -54,7 +54,6 @@ MUTATION_RATE = 0.1
 
 class Room(models.Model):
     r_number = models.CharField(max_length=6)
-    seating_capacity = models.IntegerField(default=60)
     room_type=models.CharField(max_length=25,choices=Room_Type,default='Theory')
 
     def __str__(self):
@@ -78,7 +77,6 @@ class Instructor(models.Model):
 class Course(models.Model):
     course_number = models.CharField(max_length=5, primary_key=True)
     course_name = models.CharField(max_length=40)
-    max_numb_students = models.IntegerField(default=60)
     instructors = models.ManyToManyField(Instructor)
 
 
