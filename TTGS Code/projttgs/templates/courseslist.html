@@ -441,7 +441,7 @@ fieldset button
             <tr class="table-headers">
             <th>Course Code</th>
             <th>Course Name</th>
-            <th>Max number of students</th>
+            <th>Course Instructor</th>
             <th  class="empty"></th>
             </tr>
             </thead>
@@ -451,7 +451,8 @@ fieldset button
             <tr>
              <td>{{crs.course_number}}</td>
              <td>{{crs.course_name}}</td>
-             <td>{{crs.max_numb_students}}</td>
+             <td>{{crs.instructor}}</td>
+
              <td class="empty">
                 <form action="{% url 'deletecourse' crs.course_number %}" method="post">
                         {% csrf_token %}
