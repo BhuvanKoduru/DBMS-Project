@@ -36,6 +36,16 @@ Room_Type=(
     ('Lab','Lab')
 )
 
+DEPTS = (
+    ("IS_SEM_3","IS_SEM_3"),
+    ("IS_SEM_5","IS_SEM_5"),
+    ("IS_SEM_7","IS_SEM_7"),
+    ("CSBS_SEM_1","CSBS_SEM_1"),
+    ("CSBS_SEM_3","CSBS_SEM_3"),
+    ("CSBS_SEM_5","CSBS_SEM_5"),
+    ("CSBS_SEM_7","CSBS_SEM_7"),
+)
+
 POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
@@ -96,6 +106,7 @@ class MeetingTime(models.Model):
     pid = models.CharField(max_length=4, primary_key=True)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
+    dept=models.CharField(max_length=15,choices=DEPTS,default="IS_SEM_3")
 
     
 
