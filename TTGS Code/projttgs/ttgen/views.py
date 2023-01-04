@@ -105,13 +105,9 @@ class Schedule:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                    #else:
-                     #   print(classes[i].meeting_time.day,classes[j].meeting_time.day)
-                       # print(classes[i].instructor.name,classes[j].instructor.name)
-
-                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
-                        self._numberOfConflicts += 1
-                        #print(classes[j].instructor.name)
+                    #elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
+                        #self._numberOfConflicts += 1
+                        
                     
 
                         

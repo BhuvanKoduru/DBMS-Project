@@ -96,6 +96,9 @@ class Department(models.Model):
 
     def __str__(self):
         return f'{self.dept_name}'
+
+
+        
     
     class Meta:
         db_table="Department"
@@ -109,7 +112,7 @@ class MeetingTime(models.Model):
     
 
     def __str__(self):
-        return f'{self.pid} {self.day} {self.time}'
+        return f'{self.m_id} {self.day} {self.time}'
     
     class Meta:
         db_table="Class Timing"
