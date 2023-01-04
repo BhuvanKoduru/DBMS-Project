@@ -72,6 +72,12 @@ class DepartmentForm(ModelForm):
             "dept_name": "Department Name",
             "courses": "Corresponding Courses"
         }
+        widgets = {
+            'dept_name': forms.TextInput(attrs={'class':"test-class"}),
+            'courses': forms.TextInput(attrs={'class':"test-class"}),
+            #'instructors': forms.TextInput(attrs={'class':"test-class"}),
+        }
+
 
 class MeetingTimeForm(ModelForm):
     class Meta:
