@@ -24,6 +24,7 @@ nav {
 .navbar-brand {
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
     </style>
 
@@ -83,9 +84,10 @@ nav {
 
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4">Hello {{ user.first_name }}! Lets Get Started with TTGS</h1>
-      <p>Welcome to TTGS!, a timetable management system for colleges and universities to schedule their organization's timetable. TTGS started off as a company that formed strong relationships with schools, colleges and universities to help them generate their timetable with
-         ease and maximum efficiency thus saving the organization's valuable time. Get started by referring to the flow of the system below or Contact Us with any queries or difficulties.
+      <h1 class="display-4">Hello {{ user.first_name }}! Lets Get Started with the Time Table Generator for ISE-JSSSTU(SJCE)</h1>
+      <p>
+        >Welcome to time table generator, a timetable management system for our college to schedule the department timetable.
+        Get started by referring to the flow of the system below or Contact Us with any queries or difficulties.
       </p>
       <p><a class="btn btn-primary btn-lg" href="{% url 'addInstructors' %}" role="button">Get Started &raquo;</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary btn-lg" href="{% url 'contact' %}" role="button">Contact Us &raquo;</a></p>
     </div>
@@ -96,31 +98,29 @@ nav {
     <div class="row">
       <div class="col-md-4">
         <h2>1. Add Teachers</h2>
-        <p>Navigate to the "Add Teachers" section and add the corresponding details. Incorrect Details can also be removed via the "Edit Teacher" option.</p>
+        <p>Navigate to the "Add Teachers" section and add the list of teachers for the semester.</p>
 
       </div>
       <div class="col-md-4">
         <h2>2. Add Rooms</h2>
-        <p>Navigate to the "Add Rooms" section and add the corresponding details. Incorrect Details can also be removed via the "Edit Rooms" option.</p>
-
+        <p>Navigate to the "Add Rooms" section and add the corresponding details. Select one of the rooms from Lab rooms for Lab classes and regular rooms for theory subjects.</p>
       </div>
       <div class="col-md-4">
         <h2>3. Add Timings</h2>
-        <p>Navigate to the "Add Timings" section and add the corresponding details. Incorrect Details can also be removed via the "Edit Timings" option.</p>
-
+        <p>Navigate to the "Add Timings" section and add the timings for each day of the week.</p>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-4">
         <h2>4. Add Courses</h2>
-        <p>Navigate to the "Add Courses" section and add the corresponding details. Incorrect Details can also be removed via the "Edit Courses" option.</p>
+        <p>Navigate to the "Add Courses" section and add the subject codes and subject names for the semester.</p>
+
 
       </div>
       <div class="col-md-4">
-        <h2>5. Add Departments</h2>
-        <p>Navigate to the "Add Departments" section and add the corresponding details. Incorrect Details can also be removed via the "Edit Departments" option.</p>
-
+        <h2>5. Add Dept(CSBS, IS)</h2>
+        <p>Choose to the department for which timetable is to be generated.</p>
       </div>
       <div class="col-md-4">
         <h2>6. Add Sections</h2>
@@ -146,12 +146,10 @@ nav {
 
 </main>
 
-<footer class="container">
-  <p>&copy; ttgs. All Rights Reserved</p>
-</footer>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
 
     </form>
 </body>
-</html>
+</html> 
