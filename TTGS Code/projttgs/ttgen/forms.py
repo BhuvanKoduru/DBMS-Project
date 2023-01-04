@@ -98,7 +98,7 @@ class SectionForm(ModelForm):
         model = Section
         fields = ['section_id', 'department', 'num_class_in_week']
 
-        
+
         labels = {
             "section_id": "Section ID",
             "department": "Corresponding Department",
