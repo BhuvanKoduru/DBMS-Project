@@ -277,7 +277,7 @@ fieldset input:focus{
     border-image-slice: 1;
     background: var(--gradient) !important;
     -webkit-background-clip: text !important;
-    -webkit-text-fill-color: red !important;
+    -webkit-text-fill-color:white !important;
     border-image-source:  var(--gradient) !important; 
     text-decoration: underline;
     transition: all .4s ease;
@@ -285,6 +285,7 @@ fieldset input:focus{
     padding:10px;
     box-shadow: #222 1px 0 10px;
     caret-color:white;
+
 
   }
   
@@ -310,7 +311,21 @@ fieldset input:focus{
 	box-shadow: 0px 0px 0px 0px black;
 	background-color:#222;
 }
-
+.test-class
+{
+  border: 5px solid;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: #fff !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: underline;
+    transition: all .4s ease;
+    margin:10px;
+    padding:10px;
+    box-shadow: #222 1px 0 10px;
+    caret-color:white;
+}
     </style>
 
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
@@ -398,7 +413,7 @@ fieldset input:focus{
 	<fieldset>
 		<div class="tabcontent" id="new">
 			{{ form.as_p }}
-		<a href="{% url 'editmeetingtime' %}"><h1 class="submit btn" onclick="openPage('edit')">View / Edit Timings</h1></a><input type="submit" value="Add Timings" class="submit btn">
+		<a href="{% url 'editmeetingtime' %}"><h1 class="submit btn justify-content-center" onclick="openPage('edit')">View / Edit Timings</h1></a><input type="submit" value="Add Timings" class="submit btn justify-content-center">
 		</div>
 	</fieldset>
 </form>

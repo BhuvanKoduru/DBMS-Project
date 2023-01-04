@@ -79,10 +79,10 @@ class MeetingTimeForm(ModelForm):
             
         ]
         widgets = {
-            'pid': forms.TextInput(),
-            'time': forms.Select(),
-            'day': forms.Select(),
-            'dept': forms.Select()
+            'pid': forms.TextInput(attrs={'class':"test-class"}),
+            'time': forms.Select(attrs={'class':"test-class"}),
+            'day': forms.Select(attrs={'class':"test-class"}),
+            'dept': forms.Select(attrs={'class':"test-class"})
         
         }
         labels = {
