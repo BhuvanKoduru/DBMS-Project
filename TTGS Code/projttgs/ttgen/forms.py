@@ -10,8 +10,8 @@ class RoomForm(ModelForm):
             "room_type":"Room Type"
         }
         widgets={
-            "r_number":forms.TextInput(),
-            "room_type":forms.Select()
+            "r_number":forms.TextInput(attrs={'class':"test-class"}),
+            "room_type":forms.Select(attrs={'class':"test-class"})
         }
         fields = [
             'r_number',
