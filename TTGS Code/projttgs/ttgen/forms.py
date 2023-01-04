@@ -27,11 +27,15 @@ class InstructorForm(ModelForm):
             "name": "Full Name",
             "Desig":"Designation"
         }
-        widgets= {
-            'uid':forms.TextInput(),
-            'name':forms.TextInput(),
-            'Desig':forms.Select()
-            
+        #widgets= {
+         #   'uid':forms.TextInput(),
+          #  'name':forms.TextInput(),
+           # 'Desig':forms.Select()
+        widgets = {
+            'uid': forms.TextInput(attrs={'class':"test-class"}),
+            'name': forms.TextInput(attrs={'class':"test-class"}),
+            'Desig': forms.Select(attrs={'class':"test-class"}),
+            #'dept': forms.Select(attrs={'class':"test-class"})    
         }
         fields = [
             'uid',
