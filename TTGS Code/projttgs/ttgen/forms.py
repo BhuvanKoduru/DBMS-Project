@@ -57,6 +57,12 @@ class CourseForm(ModelForm):
             "course_name": "Course Name",
             "instructors": "Course Teachers"
         }
+        widgets = {
+            'course_number': forms.TextInput(attrs={'class':"test-class"}),
+            'course_name': forms.TextInput(attrs={'class':"test-class"}),
+            'instructors': forms.TextInput(attrs={'class':"test-class"}),
+            #'dept': forms.Select(attrs={'class':"test-class"})    
+        }
 
 class DepartmentForm(ModelForm):
     class Meta:
