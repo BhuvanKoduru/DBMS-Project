@@ -23,18 +23,18 @@ class InstructorForm(ModelForm):
     class Meta:
         model = Instructor
         labels = {
-            "uid": "Teacher UID",
+            "t_id": "Teacher ID",
             "name": "Full Name",
             "Desig":"Designation"
         }
         widgets= {
-            'uid':forms.TextInput(),
+            't_id':forms.TextInput(),
             'name':forms.TextInput(),
             'Desig':forms.Select()
             
         }
         fields = [
-            'uid',
+            't_id',
             'name',
             'Desig'
         ]
@@ -47,11 +47,11 @@ class CourseForm(ModelForm):
     class Meta:
         model = Course
         fields = ['course_number', 'course_name', \
-        'instructors']
+        'instructor']
         labels = {
             "course_number": "Course ID",
             "course_name": "Course Name",
-            "instructors": "Course Teachers"
+            "instructor": "Course Teacher"
         }
 
 class DepartmentForm(ModelForm):
@@ -67,21 +67,21 @@ class MeetingTimeForm(ModelForm):
     class Meta:
         model = MeetingTime
         fields = [
-            'pid',
+            'm_id',
             'time',
             'day',
             'dept'
             
         ]
         widgets = {
-            'pid': forms.TextInput(attrs={'class':"test-class"}),
+            'm_id': forms.TextInput(attrs={'class':"test-class"}),
             'time': forms.Select(attrs={'class':"test-class"}),
             'day': forms.Select(attrs={'class':"test-class"}),
             'dept': forms.Select(attrs={'class':"test-class"})
         
         }
         labels = {
-            "pid": "Meeting ID",
+            "m_id": "Meeting ID",
             "time": "Time",
             "day": "Day of the Week",
             "dept": "Department"

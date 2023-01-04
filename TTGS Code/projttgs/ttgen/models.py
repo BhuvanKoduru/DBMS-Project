@@ -10,9 +10,9 @@ time_slots = (
     ('7:30 - 8:30', '7:30 - 8:30'),
     ('8:30 - 9:30', '8:30 - 9:30'),
     ('9:30 - 10:30', '9:30 - 10:30'),
-    ('10:30 - 11:30', '10:30 - 11:30'),
-    ('11:30 - 12:30', '11:30 - 12:30'),
-    ('12:30 - 1:30', '12:30 - 1:30'),
+    ('11:00 - 11:50', '11:00 - 11:50'),
+    ('11:50 - 12:40', '11:50 - 12:40'),
+    ('12:40 - 1:30', '12:40 - 1:30'),
     ('2:30 - 3:30', '2:30 - 3:30'),
     ('3:30 - 4:30', '3:30 - 4:30'),
     ('4:30 - 5:30', '4:30 - 5:30'),
@@ -52,7 +52,7 @@ TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
 
 
-class Room(models.Model):
+class Room(models.Model): #done
     r_number = models.CharField(max_length=6)
     room_type=models.CharField(max_length=25,choices=Room_Type,default='Theory')
 
@@ -62,22 +62,22 @@ class Room(models.Model):
         db_table="Room"
 
 
-class Instructor(models.Model):
-    uid = models.CharField(max_length=6)
+class Instructor(models.Model): #done
+    t_id = models.CharField(max_length=6)
     name = models.CharField(max_length=25)
     Desig = models.CharField(max_length=25,choices=DESIGNATIONS,default='Asst Prof')
 
 
     def __str__(self):
-        return f'{self.uid} {self.name}'
+        return f'{self.t_id} {self.name}'
 
     class Meta:
         db_table="Faculty"
 
-class Course(models.Model):
-    course_number = models.CharField(max_length=5, primary_key=True)
+class Course(models.Model): #done
+    course_number = models.CharField(max_length=15, primary_key=True)
     course_name = models.CharField(max_length=40)
-    instructors = models.ManyToManyField(Instructor)
+    instructor = models.ManyToManyField(Instructor)
 
 
     def __str__(self):
@@ -101,7 +101,7 @@ class Department(models.Model):
         db_table="Department"
 
 class MeetingTime(models.Model):
-    pid = models.CharField(max_length=4, primary_key=True)
+    m_id = models.CharField(max_length=4, primary_key=True)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
     dept=models.CharField(max_length=15,choices=DEPTS,default="IS_SEM_3")
