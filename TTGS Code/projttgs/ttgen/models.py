@@ -110,7 +110,6 @@ class MeetingTime(models.Model):
     dept=models.CharField(max_length=15,choices=DEPTS,default="IS_SEM_3")
 
     
-
     def __str__(self):
         return f'{self.m_id} {self.day} {self.time}'
     
