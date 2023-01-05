@@ -98,17 +98,17 @@ class Schedule:
                 if j >= i:
                     if (classes[i].meeting_time.m_id == classes[j].meeting_time.m_id) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
-                            
-                        #print(classes[j].section_id,classes[i].section_id)
+                        #print(classes[j].section_id)
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
                         if classes[i].instructor == classes[j].instructor:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
+                    #elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
+                        #self._numberOfConflicts += 1
                         
-                        
-                    # add global array/dictionary and remove dept attribute from meeting time table
+                    
 
                         
                     
