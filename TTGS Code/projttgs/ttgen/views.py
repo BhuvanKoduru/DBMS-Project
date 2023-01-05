@@ -9,6 +9,9 @@ from .render import Render
 from django.views.generic import View
 
 
+'''
+make a global dictionary corresponding to the timings of each dept
+'''
 POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
@@ -63,7 +66,7 @@ class Schedule:
                 courses = dept.courses.all()
                 for course in courses:
                     for i in range(n // len(courses)):
-                        crs_inst = course.instructors.all()
+                        crs_inst = course.instructor.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
@@ -75,7 +78,7 @@ class Schedule:
                 courses = dept.courses.all()
                 for course in courses:
                     for i in range(n // len(courses)):
-                        crs_inst = course.instructors.all()
+                        crs_inst = course.instructor.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
@@ -90,27 +93,22 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            #if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
-               # self._numberOfConflicts += 1
+            
             for j in range(len(classes)):
                 if j >= i:
-                    if (classes[i].meeting_time.pid == classes[j].meeting_time.pid) and \
+                    if (classes[i].meeting_time.m_id == classes[j].meeting_time.m_id) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
-                        #print(classes[j].section_id)
+                            
+                        #print(classes[j].section_id,classes[i].section_id)
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
                         if classes[i].instructor == classes[j].instructor:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                    #else:
-                     #   print(classes[i].meeting_time.day,classes[j].meeting_time.day)
-                       # print(classes[i].instructor.name,classes[j].instructor.name)
-
-                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
-                        self._numberOfConflicts += 1
-                        #print(classes[j].instructor.name)
-                    
+                        
+                        
+                    # add global array/dictionary and remove dept attribute from meeting time table
 
                         
                     

@@ -10,8 +10,8 @@ class RoomForm(ModelForm):
             "room_type":"Room Type"
         }
         widgets={
-            "r_number":forms.TextInput(attrs={'class':"test-class"}),
-            "room_type":forms.Select(attrs={'class':"test-class"})
+            "r_number":forms.TextInput(),
+            "room_type":forms.Select()
         }
         fields = [
             'r_number',
@@ -23,22 +23,18 @@ class InstructorForm(ModelForm):
     class Meta:
         model = Instructor
         labels = {
-            "uid": "Teacher UID",
+            "t_id": "Teacher ID",
             "name": "Full Name",
             "Desig":"Designation"
         }
-        #widgets= {
-         #   'uid':forms.TextInput(),
-          #  'name':forms.TextInput(),
-           # 'Desig':forms.Select()
-        widgets = {
-            'uid': forms.TextInput(attrs={'class':"test-class"}),
-            'name': forms.TextInput(attrs={'class':"test-class"}),
-            'Desig': forms.Select(attrs={'class':"test-class"}),
-            #'dept': forms.Select(attrs={'class':"test-class"})    
+        widgets= {
+            't_id':forms.TextInput(),
+            'name':forms.TextInput(),
+            'Desig':forms.Select()
+            
         }
         fields = [
-            'uid',
+            't_id',
             'name',
             'Desig'
         ]
@@ -51,17 +47,11 @@ class CourseForm(ModelForm):
     class Meta:
         model = Course
         fields = ['course_number', 'course_name', \
-        'instructors']
+        'instructor']
         labels = {
             "course_number": "Course ID",
             "course_name": "Course Name",
-            "instructors": "Course Teachers"
-        }
-        widgets = {
-            'course_number': forms.TextInput(attrs={'class':"test-class"}),
-            'course_name': forms.TextInput(attrs={'class':"test-class"}),
-            'instructors': forms.TextInput(attrs={'class':"test-class"}),
-            #'dept': forms.Select(attrs={'class':"test-class"})    
+            "instructor": "Course Teacher"
         }
 
 class DepartmentForm(ModelForm):
@@ -72,32 +62,26 @@ class DepartmentForm(ModelForm):
             "dept_name": "Department Name",
             "courses": "Corresponding Courses"
         }
-        widgets = {
-            'dept_name': forms.TextInput(attrs={'class':"test-class"}),
-            'courses': forms.TextInput(attrs={'class':"test-class"}),
-            #'instructors': forms.TextInput(attrs={'class':"test-class"}),
-        }
-
 
 class MeetingTimeForm(ModelForm):
     class Meta:
         model = MeetingTime
         fields = [
-            'pid',
+            'm_id',
             'time',
             'day',
             'dept'
             
         ]
         widgets = {
-            'pid': forms.TextInput(attrs={'class':"test-class"}),
+            'm_id': forms.TextInput(attrs={'class':"test-class"}),
             'time': forms.Select(attrs={'class':"test-class"}),
             'day': forms.Select(attrs={'class':"test-class"}),
             'dept': forms.Select(attrs={'class':"test-class"})
         
         }
         labels = {
-            "pid": "Meeting ID",
+            "m_id": "Meeting ID",
             "time": "Time",
             "day": "Day of the Week",
             "dept": "Department"
