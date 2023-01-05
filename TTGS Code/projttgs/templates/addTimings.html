@@ -213,7 +213,7 @@ body{
 html{
 	scroll-behavior: smooth;
 }
-a:link,a:visited{
+a{
 	text-decoration:none;
 }
 button
@@ -281,7 +281,7 @@ fieldset input:focus{
     -webkit-background-clip: text !important;
     -webkit-text-fill-color:white !important;
     border-image-source:  var(--gradient) !important; 
-    text-decoration: none;
+    text-decoration: underline;
     transition: all .4s ease;
     margin:10px;
     padding:10px;
@@ -292,12 +292,12 @@ fieldset input:focus{
   }
   
   .btn:hover, .btn:focus {
-     /* background: var(--gradient) !important; */
+        background: var(--gradient) !important;
     -webkit-background-clip: none !important;
     -webkit-text-fill-color: #fff !important;
-    border: 5px solid black !important; 
+    border: 5px solid #fff !important; 
     box-shadow: #222 1px 0 10px;
-    text-decoration: none;
+    text-decoration: underline;
   }
 
 #link_to_edit{
