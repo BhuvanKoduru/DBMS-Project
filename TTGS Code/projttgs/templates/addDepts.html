@@ -35,7 +35,7 @@
         font-family: Georgia, 'Times New Roman', Times, serif;
     }
 
-*{
+      *{
 	margin: 0;
 	padding: 0;
 
@@ -185,149 +185,6 @@ fieldset button
 	box-shadow: 6px 13px 13px 0px black;
 	background-color: #ebfffa;
 }
-
-
-
-:root {
---gradient:linear-gradient(to right,#e1b382,#DECBA4)  !important;
-
-  }
-      nav {
-        font-family: sans-serif;
-        }
-
-      .navbar-brand {
-        font-size: 20px;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-
-      *{
-	margin: 0;
-	padding: 0;
-
-}
-body{
-    background-color:#12343b;
-}
-
-html{
-	scroll-behavior: smooth;
-}
-a:link,a:visited{
-	text-decoration:none;
-}
-button
-{
-	border-style:none;
-}
-
-h1, h2, h3, h4, h5{
-    text-align: center;
-    color: whitesmoke;
-
-}
-
-form {
-	margin-top: 2%;
-	margin-left: 18%;
-	margin-right: 21%;
-
-
-}
-
-form fieldset{
-
-    border: 10px solid;
-    border-image-slice: 1;
-    padding:40px;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    border-image-source:  var(--gradient) !important; 
-    text-decoration: none;
-    background: #222;
-
-}
-
-fieldset h1 {
-	color: #dd2476;
-	padding-bottom: 20px;
-	margin-left: 35px;
-	display: inline-block;
-	cursor: pointer;
-	font-size: 28px;
-	text-align: center;
-}
-
-fieldset label {
-	margin-left: 40px;
-	padding: 23px;
-	font-size: 20px;
-	display: inline-block;
-    width  : 240px;
-}
-fieldset input{
-	padding:8px;
-	color: #dd2476;
-}
-fieldset input:focus{
-	color: #000;
-}
-
-.btn, #ctiming,#cname,#week {
-    border: 5px solid;
-    border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color:white !important;
-    border-image-source:  var(--gradient) !important; 
-    text-decoration: none;
-    transition: all .4s ease;
-    margin:10px;
-    padding:10px;
-    box-shadow: #222 1px 0 10px;
-    caret-color:white;
-
-
-  }
-  
-  .btn:hover, .btn:focus {
-     /* background: var(--gradient) !important; */
-    -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 5px solid black !important; 
-    box-shadow: #222 1px 0 10px;
-    text-decoration: none;
-  }
-
-#link_to_edit{
-    padding-left: 45px;
-}
-
-.fieldset{
-	margin:auto;
-	padding: 50px;
-	border-width: 0px;
-	border-style: ridge;
-	border-color:black;
-	box-shadow: 0px 0px 0px 0px black;
-	background-color:#222;
-}
-.test-class
-{
-  border: 5px solid;
-    border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: #fff !important;
-    border-image-source:  var(--gradient) !important; 
-    text-decoration: underline;
-    transition: all .4s ease;
-    margin:10px;
-    padding:10px;
-    box-shadow: #222 1px 0 10px;
-    caret-color:white;
-}
     </style>
 
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
@@ -414,7 +271,7 @@ fieldset input:focus{
 	<fieldset>
 		<div class="tabcontent" id="new">
 			{{ form.as_p }}
-		<a href="{% url 'editdepartment' %}"><h1 class="submit btn justify-content-center" onclick="openPage('edit')">View / Edit Departments</h1></a><input type="submit" value="Add Departments" class="submit btn justify-content-center">
+		<a href="{% url 'editdepartment' %}"><h1 class="submit" onclick="openPage('edit')">View / Edit Departments</h1></a><input type="submit" value="Add Departments" class="submit">
 		</div>
 	</fieldset>
 </form>
