@@ -1,3 +1,0 @@
-1. Check if we can relate timings to dept
-2. add credits for each course
-3. two different subjects given at same time

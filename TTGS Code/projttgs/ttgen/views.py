@@ -9,9 +9,6 @@ from .render import Render
 from django.views.generic import View
 
 
-'''
-make a global dictionary corresponding to the timings of each dept
-'''
 POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
@@ -66,7 +63,7 @@ class Schedule:
                 courses = dept.courses.all()
                 for course in courses:
                     for i in range(n // len(courses)):
-                        crs_inst = course.instructor.all()
+                        crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
@@ -78,11 +75,12 @@ class Schedule:
                 courses = dept.courses.all()
                 for course in courses:
                     for i in range(n // len(courses)):
-                        crs_inst = course.instructor.all()
+                        crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
+                        print(crs_inst)
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
                         self._classes.append(newClass)
 
@@ -93,25 +91,20 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            
+            if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
+                self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
-                    if (classes[i].meeting_time.m_id == classes[j].meeting_time.m_id) and \
+                    #print(classes[j].section_id)
+                    if (classes[i].meeting_time == classes[j].meeting_time) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
-                        #print(classes[j].section_id)
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
                         if classes[i].instructor == classes[j].instructor:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                    #elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor==classes[j].instructor)):
-                        #self._numberOfConflicts += 1
                         
-                    
-
-                        
-                    
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
 
@@ -182,8 +175,6 @@ class Class:
         self.room = None
         self.section = section
 
-        #hello ekfewifeiofoefi
-
     def get_id(self): return self.section_id
 
     def get_dept(self): return self.department
@@ -235,9 +226,6 @@ def timetable(request):
         population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
         schedule = population.get_schedules()[0].get_classes()
 
-
-    #print(schedule)
-
     return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
                                               'times': MeetingTime.objects.all()})
 
@@ -245,7 +233,7 @@ def timetable(request):
 
 
 def index(request):
-    return render(request, 'homepage.html', {})
+    return render(request, 'index.html', {})
 
 
 def about(request):

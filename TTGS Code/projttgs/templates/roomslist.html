@@ -443,7 +443,7 @@ fieldset button
             <thead>
             <tr class="table-headers">
             <th>Room No.</th>
-            <th>Room Type</th>
+            <th>Seating Capacity</th>
             <th  class="empty"></th>
             </tr>
             </thead>
@@ -452,7 +452,7 @@ fieldset button
             {% for rm in rooms %}
             <tr>
              <td>{{rm.r_number}}</td>
-             <td>{{rm.room_type}}</td>
+             <td>{{rm.seating_capacity}}</td>
              <td class="empty">
                 <form action="{% url 'deleteroom' rm.id %}" method="post">
                         {% csrf_token %}
