@@ -81,7 +81,7 @@ class Course(models.Model): #done
 
 
     def __str__(self):
-        return f'{self.course_number} {self.course_name}'
+        return f'{self.course_number} {self.course_name} {self.instructor}'
 
     class Meta:
         db_table="Courses"
@@ -107,7 +107,7 @@ class MeetingTime(models.Model):
     m_id = models.CharField(max_length=4, primary_key=True)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
-    dept=models.CharField(max_length=15,choices=DEPTS,default="IS_SEM_3")
+    #dept=models.CharField(max_length=15,choices=DEPTS,default="IS_SEM_3")
 
     
 
