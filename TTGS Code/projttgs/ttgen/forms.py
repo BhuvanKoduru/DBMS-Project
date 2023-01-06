@@ -58,6 +58,14 @@ class CourseForm(ModelForm):
             "max_numb_students": "Course Capacity",
             "instructors": "Course Teachers"
         }
+        widgets = {
+             'course_number': forms.TextInput(attrs={'class':"test-class"}),
+            'course_name': forms.TextInput(attrs={'class':"test-class"}),
+            'max_numb_students': forms.TextInput(attrs={'class':"test-class"}),
+            "instructors":forms.Select(attrs={'class':"test-class"})
+
+        }
+        
 
 
 class DepartmentForm(ModelForm):
