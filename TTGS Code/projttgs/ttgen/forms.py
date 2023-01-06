@@ -76,6 +76,11 @@ class DepartmentForm(ModelForm):
             "dept_name": "Department Name",
             "courses": "Corresponding Courses"
         }
+        widgets = {
+             'dept_name': forms.TextInput(attrs={'class':"test-class"}),
+            'courses': forms.Select(attrs={'class':"test-class"}),
+            #'day': forms.Select(attrs={'class':"test-class"}),
+        }
 
 
 class SectionForm(ModelForm):
