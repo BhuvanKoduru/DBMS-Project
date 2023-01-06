@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 
      <style>
-      .bd-placeholder-img {
+        .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
@@ -352,16 +352,15 @@ fieldset input:focus{
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
                     </li>
+                    <li class="nav-item active">
+		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
+		            </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
                     </li>
                     <li class="nav-item">
 			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
 		            </li>
-                    <li class="nav-item active">
-		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
-		            </li>
-                    
                     <li class="nav-item">
 			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
 		            </li>

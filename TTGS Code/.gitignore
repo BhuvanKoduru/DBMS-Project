@@ -1,5 +1,5 @@
 venv
 projttgs/account/__pycache__
-TTGS Code/projttgs/account/migrations/__pycache__/*
-TTGS Code/projttgs/ttgen/migrations/__pycache__/*
-TTGS Code/projttgs/ttgen/__pycache__/*
+*.__pycache__
+__pycache__
+*pyc

@@ -439,11 +439,9 @@ fieldset button
 			<table class="table1">
 				<thead>
 				<tr class="table-headers">
-				<th>Meeting ID</th>
+				<th>PID</th>
 				<th>Day</th>
 				<th>Timing</th>
-				<th>Dept</th>
-
 				<th  class="empty"></th>
 				</tr>
 				</thead>
@@ -451,12 +449,11 @@ fieldset button
 				<tbody>
 				{% for mt in meeting_times %}
 				<tr>
-				 <td>{{mt.m_id}}</td>
+				 <td>{{mt.pid}}</td>
 				 <td>{{mt.day}}</td>
 				 <td>{{mt.time}}</td>
-				 <td>{{mt.dept}}</td>
 				 <td class="empty">
-					<form action="{% url 'deletemeetingtime' mt.m_id %}" method="post">
+					<form action="{% url 'deletemeetingtime' mt.pid %}" method="post">
 						{% csrf_token %}
 						<input type="submit" value="Delete" class="cross">
 					</form>

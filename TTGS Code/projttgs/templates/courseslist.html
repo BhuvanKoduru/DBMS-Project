@@ -378,16 +378,15 @@ fieldset button
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
                     </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
-                  </li>
-                  <li class="nav-item">
-                <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
-              </li>
                     <li class="nav-item">
 		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
 		            </li>
-                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
+                    </li>
+                    <li class="nav-item">
+			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
+		            </li>
                     <li class="nav-item">
 			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
 		            </li>
@@ -441,7 +440,7 @@ fieldset button
             <tr class="table-headers">
             <th>Course Code</th>
             <th>Course Name</th>
-            <th>Course Instructor</th>
+            <th>Max number of students</th>
             <th  class="empty"></th>
             </tr>
             </thead>
@@ -451,8 +450,7 @@ fieldset button
             <tr>
              <td>{{crs.course_number}}</td>
              <td>{{crs.course_name}}</td>
-             <td>{{crs.instructor}}</td>
-
+             <td>{{crs.max_numb_students}}</td>
              <td class="empty">
                 <form action="{% url 'deletecourse' crs.course_number %}" method="post">
                         {% csrf_token %}
