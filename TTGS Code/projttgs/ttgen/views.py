@@ -173,24 +173,28 @@ class Schedule:
                     #     print(Sweet_spot)
                     #     newClass.set_meetingTime(MeetingTime.objects.filter(day=DAY,time=Sweet_spot))
 
-                        allmeetingtimes= MeetingTime.objects.all()
-                        avbldays=[]
-                        for timing in allmeetingtimes:
-                            avbldays.append(timing.day)
-                        randomday= random.choice(avbldays)
-                        #print(random_day)
-                        semdict= timings[dept.dept_name]
-                        #print(sem_dict)
-                        daylist=semdict[randomday]
-                        #print(day_list)
-                        reqrandomtime= random.choice(daylist)
-                        #print(reqrandomtime)
-                        testobj=MeetingTime.objects.filter(time=reqrandomtime,day=randomday)
-                        print(testobj)
-
-                        newClass.set_meetingTime(testobj)
-
-                        #newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]) org
+                        # allmeetingtimes= MeetingTime.objects.all()
+                        # avbldays=[]
+                        # for timing in allmeetingtimes:
+                        #     avbldays.append(timing.day)
+                        # randomday= random.choice(avbldays)
+                        # avbldays=list(set(avbldays))
+                        # #print(avbldays)
+                        # semdict= timings[dept.dept_name]
+                        # #print(sem_dict)
+                        # daylist=semdict[randomday]
+                        # #print(day_list)
+                        # reqrandomtime= random.choice(daylist)
+                        # #print(randomday,semdict,reqrandomtime)
+                        # testobj=MeetingTime.objects.filter(time=reqrandomtime,day=randomday)
+                        # print(testobj)
+                        
+                        # #newClass.set_meetingTime(testobj)
+                        # y=data.get_meetingTimes()
+                        # print(y)
+                        x=data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]
+                        #print(x)
+                        newClass.set_meetingTime(x)
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
                         #print(newClass.meeting_time.day)
@@ -229,8 +233,14 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            #if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
-            #    self._numberOfConflicts += 1
+            # d=classes[i].meeting_time.day
+            # t=classes[i].meeting_time.time
+            # de=classes[i].department.dept_name
+            # deptdic=timings[de]
+            # daylist=deptdic[d]
+            # if(t not in daylist):
+            #     self._numberOfConflicts += 1
+
             for j in range(len(classes)):
                 if j >= i:
                     #print(classes[j].section_id)
@@ -242,7 +252,9 @@ class Schedule:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                        
+                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and (classes[i].section == classes[j].section) and  (classes[i].instructor == classes[j].instructor)):
+                        self._numberOfConflicts += 1
+                       
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
 
