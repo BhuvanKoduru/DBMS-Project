@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .render import Render
 from django.views.generic import View
+import random
 
 
 POPULATION_SIZE = 9
@@ -17,37 +18,62 @@ MUTATION_RATE = 0.05
 
 
 
-timings =[]
-IS_SEM_3 = {
-    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30"],
-    "TUE": ["8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-    "WED": ["8:30-9:30","9:30-10:30"],
-    "THR": ["7:30-8:30","8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-    "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-    "SAT": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"]
+timings ={
+    "IS_SEM_3" : {
+        "MON": ["11:00 - 11:50","11:50 - 12:40","12:40 - 1:30"],
+        "TUE": ["8:30 - 9:30","9:30 - 10:30","11:00 - 11:50","11:50 - 12:40","12:40 - 1:30"],
+        "WED": ["8:30 - 9:30","9:30 - 10:30"],
+        "THR": ["7:30 - 8:30","8:30 - 9:30","9:30 - 10:30","11:00 - 11:50","11:50 - 12:40","12:40 - 1:30"],
+        "FRI": ["9:30 - 10:30","11:00 - 11:50","11:50 - 12:40","12:40 - 1:30"],
+        "SAT": ["9:30 - 10:30","11:00 - 11:50","11:50 - 12:40","12:40 - 1:30"]
+    },
+    "IS_SEM_5" : {
+        "MON": ["11:00 - 11:50","11:50 - 12:40","12:40 - 1:30","2:30 - 3:30","3:30 - 4:30","4:30 - 5:30"],
+        "TUE": ["7:30 - 8:30","8:30 - 9:30"],
+        "WED": ["11:00 - 11:50","11:50 - 12:40","12:40 - 1:30","2:30 - 3:30","3:30 - 4:30","4:30-5:30"],
+        "THR": ["11:00-11:50","11:50-12:40","12:40-1:30"],
+        "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+        "SAT":[]
+    },
+    "IS_SEM_7" : {
+        "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+        "TUE": [],
+        "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+        "THR": ["8:30-9:30","9:30-10:30"],
+        "FRI": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30"],
+        "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
+    }
 }
-timings.append(IS_SEM_3)
+# IS_SEM_3 = {
+#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "TUE": ["8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "WED": ["8:30-9:30","9:30-10:30"],
+#     "THR": ["7:30-8:30","8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "SAT": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"]
+# }
+# #timings.append(IS_SEM_3)
 
-IS_SEM_5 = {
-    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-    "TUE": ["7:30-8:30","8:30-9:30"],
-    "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-    "THR": ["11:00-11:50","11:50-12:40","12:40-1:30"],
-    "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-    "SAT":[]
-}
-timings.append(IS_SEM_5)
+# IS_SEM_5 = {
+#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+#     "TUE": ["7:30-8:30","8:30-9:30"],
+#     "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+#     "THR": ["11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+#     "SAT":[]
+# }
+# #timings.append(IS_SEM_5)
 
 
-IS_SEM_7 = {
-    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-    "TUE": [],
-    "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-    "THR": ["8:30-9:30","9:30-10:30"],
-    "FRI": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30"],
-    "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
-}
-timings.append(IS_SEM_7)
+# IS_SEM_7 = {
+#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+#     "TUE": [],
+#     "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+#     "THR": ["8:30-9:30","9:30-10:30"],
+#     "FRI": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30"],
+#     "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
+# }
+#timings.append(IS_SEM_7)
 
 
 # to find: if IS_SEM_3 has a 7:30 to 8:30 class on MON:
@@ -58,6 +84,12 @@ timings.append(IS_SEM_7)
 # print ("hurray")
 #
 
+
+#
+# 
+# sample = MeetingTime.objects.filter(day=DAY,time=Sweet_spot)
+# 
+# 
 
 
 
@@ -105,7 +137,9 @@ class Schedule:
 
     def initialize(self):
         sections = Section.objects.all()
+        #print(sections[0].num_class_in_week)
         for section in sections:
+            # print(section.meeting_time)
             dept = section.department
             n = section.num_class_in_week
             #n=0
@@ -117,14 +151,49 @@ class Schedule:
             if n <= len(MeetingTime.objects.all()):
                 courses = dept.courses.all()
                 for course in courses:
-                    #for i in range(n // len(courses)):
+                    #print(course)
                     for i in range (int(course.credits)):
                         crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
-                        newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
+                        flag=1
+                       # print(flag)
+                        #flag+=1
+                        # while (flag):
+                        #     temp_timing_obj = data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]
+                        #     dict_of_sem = timings[dept.dept_name]
+                        #     day_list= dict_of_sem[temp_timing_obj.day]
+                        #     if temp_timing_obj.time in day_list:
+                        #         newClass.set_meetingTime(temp_timing_obj)
+                        #         flag=0
+                    #     DAY, DAY_TIMINGS = random.choice(list(timings[dept.dept_name].items()))
+                    #     print(DAY)
+                    #     Sweet_spot = random.choice(DAY_TIMINGS)
+                    #    # print("yay while loop!")
+                    #     print(Sweet_spot)
+                    #     newClass.set_meetingTime(MeetingTime.objects.filter(day=DAY,time=Sweet_spot))
+
+                        allmeetingtimes= MeetingTime.objects.all()
+                        avbldays=[]
+                        for timing in allmeetingtimes:
+                            avbldays.append(timing.day)
+                        randomday= random.choice(avbldays)
+                        #print(random_day)
+                        semdict= timings[dept.dept_name]
+                        #print(sem_dict)
+                        daylist=semdict[randomday]
+                        #print(day_list)
+                        reqrandomtime= random.choice(daylist)
+                        #print(reqrandomtime)
+                        testobj=MeetingTime.objects.filter(time=reqrandomtime,day=randomday)
+                        print(testobj)
+
+                        newClass.set_meetingTime(testobj)
+
+                        #newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]) org
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
+                        #print(newClass.meeting_time.day)
                         self._classes.append(newClass)
             else:
                 n = len(MeetingTime.objects.all())
@@ -134,7 +203,20 @@ class Schedule:
                         crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
-                        newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
+                        flag=1
+                        while (flag):
+                            temp_timing_obj = data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]
+                            dict_of_sem = timings[dept.dept_name]
+                            day_list= dict_of_sem[temp_timing_obj.day]
+                            if temp_timing_obj.time in day_list:
+                                newClass.set_meetingTime(temp_timing_obj)
+                                flag=0
+
+                        print("yay while loop!")
+
+                         
+                        
+                        #newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
                         # print(crs_inst)
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
