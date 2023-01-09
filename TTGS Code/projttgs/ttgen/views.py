@@ -14,6 +14,53 @@ NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.05
 
+
+
+
+timings =[]
+IS_SEM_3 = {
+    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30"],
+    "TUE": ["8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+    "WED": ["8:30-9:30","9:30-10:30"],
+    "THR": ["7:30-8:30","8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+    "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+    "SAT": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"]
+}
+timings.append(IS_SEM_3)
+
+IS_SEM_5 = {
+    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+    "TUE": ["7:30-8:30","8:30-9:30"],
+    "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+    "THR": ["11:00-11:50","11:50-12:40","12:40-1:30"],
+    "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
+    "SAT":[]
+}
+timings.append(IS_SEM_5)
+
+
+IS_SEM_7 = {
+    "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+    "TUE": [],
+    "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
+    "THR": ["8:30-9:30","9:30-10:30"],
+    "FRI": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30"],
+    "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
+}
+timings.append(IS_SEM_7)
+
+
+# to find: if IS_SEM_3 has a 7:30 to 8:30 class on MON:
+# required_dict=timings[timings.index("IS_SEM_3")] 
+# required_day_timings= required_dict["MON"]
+# required_bool_time= needed_time in required_day_timings
+# #
+# print ("hurray")
+#
+
+
+
+
 class Data:
     def __init__(self):
         self._rooms = Room.objects.all()
@@ -54,45 +101,24 @@ class Schedule:
             self._isFitnessChanged = False
         return self._fitness
 
-# timings =[]
-#temp=
-# "IS_SEM_3" = {
-#     "MON": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
-#     "TUE": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
-#     "WED": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
-# }
-#timings.append(temp)
-# timings=[
-# "IS_SEM_3" {
-#               MON,TUE,WED...
-#              },
-#"IS_SEM_5" {
-#               MON,TUE,WED...
-#              }
-# ]
 
-# to find: if IS_SEM_3 has a 7:30 to 8:30 class on MON:
-# required_dict=timings[timings.index("IS_SEM_3")] 
-# required_day_timings= required_dict["MON"]
-# required_bool_time= needed_time in required_day_timings
-# #
-# print ("hurray")
-#
 
     def initialize(self):
         sections = Section.objects.all()
         for section in sections:
             dept = section.department
             n = section.num_class_in_week
-            # n=0
-            # courses = dept.courses.all()
-            # for course in courses:
-            #     n+=course.credits    
+            #n=0
+            courses = dept.courses.all()
+            # print("Here are the credits")
+            # print(courses[0].credits)
+            #for course in courses:
+            #    n+=int(course.credits) 
             if n <= len(MeetingTime.objects.all()):
                 courses = dept.courses.all()
                 for course in courses:
-                    for i in range(n // len(courses)):
-                    #for i in range (course.credits):
+                    #for i in range(n // len(courses)):
+                    for i in range (int(course.credits)):
                         crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
@@ -110,7 +136,7 @@ class Schedule:
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rnd.randrange(0, len(data.get_rooms()))])
-                        print(crs_inst)
+                        # print(crs_inst)
                         newClass.set_instructor(crs_inst[rnd.randrange(0, len(crs_inst))])
                         self._classes.append(newClass)
 
