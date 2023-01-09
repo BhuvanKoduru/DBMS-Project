@@ -328,6 +328,22 @@ fieldset input:focus{
     box-shadow: #222 1px 0 10px;
     caret-color:white;
 }
+
+.tabcontent select,input
+	{
+		border: 5px solid;
+		border-image-slice: 1;
+		background: var(--gradient) !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: #fff !important;
+		border-image-source:  var(--gradient) !important; 
+		text-decoration: underline;
+		transition: all .4s ease;
+		margin:10px;
+		padding:10px;
+		box-shadow: #222 1px 0 10px;
+		caret-color:white;
+	}
     </style>
 
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
@@ -407,7 +423,7 @@ fieldset input:focus{
         {% load static %}
         <br><br>
         <h2>Add Departments</h2>
-        <h5>Please use the following form to enter the Departments into the system for timetable generation</h5>
+        <h5>Dept name as follows: "IS_SEM_3"</h5>
 <form method="post">
 	{% csrf_token %}
 	<fieldset>

@@ -28,7 +28,7 @@ class Data:
 
     def get_courses(self): return self._courses
 
-    def get_depts(self): return self._depts
+    def get_depts(self): return self._depts\
 
     def get_meetingTimes(self): return self._meetingTimes
 
@@ -54,15 +54,45 @@ class Schedule:
             self._isFitnessChanged = False
         return self._fitness
 
+# timings =[]
+#temp=
+# "IS_SEM_3" = {
+#     "MON": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
+#     "TUE": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
+#     "WED": ["7:30-8:30","7:30-8:30","7:30-8:30","7:30-8:30"]
+# }
+#timings.append(temp)
+# timings=[
+# "IS_SEM_3" {
+#               MON,TUE,WED...
+#              },
+#"IS_SEM_5" {
+#               MON,TUE,WED...
+#              }
+# ]
+
+# to find: if IS_SEM_3 has a 7:30 to 8:30 class on MON:
+# required_dict=timings[timings.index("IS_SEM_3")] 
+# required_day_timings= required_dict["MON"]
+# required_bool_time= needed_time in required_day_timings
+# #
+# print ("hurray")
+#
+
     def initialize(self):
         sections = Section.objects.all()
         for section in sections:
             dept = section.department
             n = section.num_class_in_week
+            # n=0
+            # courses = dept.courses.all()
+            # for course in courses:
+            #     n+=course.credits    
             if n <= len(MeetingTime.objects.all()):
                 courses = dept.courses.all()
                 for course in courses:
                     for i in range(n // len(courses)):
+                    #for i in range (course.credits):
                         crs_inst = course.instructors.all()
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
@@ -91,8 +121,8 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
-                self._numberOfConflicts += 1
+            #if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
+            #    self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
                     #print(classes[j].section_id)
