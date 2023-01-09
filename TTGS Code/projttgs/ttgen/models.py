@@ -7,22 +7,30 @@ from django.db.models.signals import post_save, post_delete
 from datetime import timedelta, date
 
 time_slots = (
+    ('7:30 - 8:30', '7:30 - 8:30'),
+    ('8:30 - 9:30', '8:30 - 9:30'),
     ('9:30 - 10:30', '9:30 - 10:30'),
-    ('10:30 - 11:30', '10:30 - 11:30'),
-    ('11:30 - 12:30', '11:30 - 12:30'),
-    ('12:30 - 1:30', '12:30 - 1:30'),
+    ('11:00 - 11:50', '11:00 - 11:50'),
+    ('11:50 - 12:40', '11:50 - 12:40'),
+    ('12:40 - 1:30', '12:40 - 1:30'),
     ('2:30 - 3:30', '2:30 - 3:30'),
     ('3:30 - 4:30', '3:30 - 4:30'),
     ('4:30 - 5:30', '4:30 - 5:30'),
 )
 
 DAYS_OF_WEEK = (
-    ('Monday', 'Monday'),
-    ('Tuesday', 'Tuesday'),
-    ('Wednesday', 'Wednesday'),
-    ('Thursday', 'Thursday'),
-    ('Friday', 'Friday'),
-    ('Saturday', 'Saturday'),
+    ('MON', 'MON'),
+    ('TUE', 'TUE'),
+    ('WED', 'WED'),
+    ('THR', 'THR'),
+    ('FRI', 'FRI'),
+    ('SAT', 'SAT'),
+)
+
+DESIGNATIONS= (
+    ('Prof.','Prof'),
+    ('Asst. Prof','Asst. Prof'),
+    ('Associate Prof', 'Associate Prof')
 )
 
 POPULATION_SIZE = 9
@@ -30,10 +38,15 @@ NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
 
-
+ROOM_TYPES= (
+    ('Theory', 'Theory'),
+    ('Lab','Lab')
+)
 class Room(models.Model):
     r_number = models.CharField(max_length=6)
-    seating_capacity = models.IntegerField(default=0)
+    seating_capacity = models.IntegerField(default=60)
+    r_type = models.CharField(max_length=10,choices=ROOM_TYPES)
+    
 
     def __str__(self):
         return self.r_number
@@ -42,6 +55,7 @@ class Room(models.Model):
 class Instructor(models.Model):
     uid = models.CharField(max_length=6)
     name = models.CharField(max_length=25)
+    desig = models.CharField(max_length=25,choices=DESIGNATIONS)
 
     def __str__(self):
         return f'{self.uid} {self.name}'
@@ -59,7 +73,8 @@ class MeetingTime(models.Model):
 class Course(models.Model):
     course_number = models.CharField(max_length=5, primary_key=True)
     course_name = models.CharField(max_length=40)
-    max_numb_students = models.CharField(max_length=65)
+   # max_numb_students = models.CharField(max_length=65) #rename to credits
+    credits=models.CharField(max_length=4)
     instructors = models.ManyToManyField(Instructor)
 
     def __str__(self):

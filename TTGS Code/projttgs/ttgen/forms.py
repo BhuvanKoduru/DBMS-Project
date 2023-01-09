@@ -7,11 +7,13 @@ class RoomForm(ModelForm):
         model = Room
         labels = {
             "r_number": "Room ID",
-            "seating_capacity": "Capacity"
+            #"seating_capacity": "Capacity",
+            "r_type": "Room type"
         }
         fields = [
             'r_number',
-            'seating_capacity'
+            #'seating_capacity'
+            'r_type'
         ]
 
 
@@ -19,12 +21,20 @@ class InstructorForm(ModelForm):
     class Meta:
         model = Instructor
         labels = {
-            "uid": "Teacher UID",
-            "name": "Full Name"
+            "uid": "Teacher ID",
+            "name": "Full Name",
+            "desig": "Designation"
+
+        }
+        widgets = {
+             'uid': forms.TextInput(attrs={'class':"test-class"}),
+            'name': forms.TextInput(attrs={'class':"test-class"}),
+            'desig': forms.Select(attrs={'class':"test-class"}),
         }
         fields = [
             'uid',
             'name',
+            'desig'
         ]
 
 
@@ -51,20 +61,20 @@ class MeetingTimeForm(ModelForm):
 class CourseForm(ModelForm):
     class Meta:
         model = Course
-        fields = ['course_number', 'course_name', 'max_numb_students', 'instructors']
+        fields = ['course_number', 'course_name', 'credits', 'instructors']
         labels = {
             "course_number": "Course ID",
             "course_name": "Course Name",
-            "max_numb_students": "Course Capacity",
+            "credits": "Course Credits",
             "instructors": "Course Teachers"
         }
-        widgets = {
-             'course_number': forms.TextInput(attrs={'class':"test-class"}),
-            'course_name': forms.TextInput(attrs={'class':"test-class"}),
-            'max_numb_students': forms.TextInput(attrs={'class':"test-class"}),
-            "instructors":forms.Select(attrs={'class':"test-class"})
+        # widgets = {
+        #      'course_number': forms.TextInput(attrs={'class':"test-class"}),
+        #     'course_name': forms.TextInput(attrs={'class':"test-class"}),
+        #     'credits': forms.TextInput(attrs={'class':"test-class"}),
+        #     "instructors":forms.MultipleChoiceField(attrs={'class':"test-class"})
 
-        }
+        # }
         
 
 
@@ -75,11 +85,6 @@ class DepartmentForm(ModelForm):
         labels = {
             "dept_name": "Department Name",
             "courses": "Corresponding Courses"
-        }
-        widgets = {
-             'dept_name': forms.TextInput(attrs={'class':"test-class"}),
-            'courses': forms.Select(attrs={'class':"test-class"}),
-            #'day': forms.Select(attrs={'class':"test-class"}),
         }
 
 

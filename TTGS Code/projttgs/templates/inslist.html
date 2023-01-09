@@ -438,8 +438,9 @@ fieldset button
         <table class="table1">
             <thead>
             <tr class="table-headers">
-            <th>UID</th>
+            <th>ID</th>
             <th>Name</th>
+            <th>Designation</th>
             <th  class="empty"></th>
             </tr>
             </thead>
@@ -449,6 +450,7 @@ fieldset button
             <tr>
              <td>{{inst.uid}}</td>
              <td>{{inst.name}}</td>
+             <td>{{inst.desig}}</td>
              <td class="empty">
                 <form action="{% url 'deleteinstructor' inst.id %}" method="post">
                         {% csrf_token %}

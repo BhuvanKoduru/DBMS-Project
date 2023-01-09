@@ -1,0 +1,4 @@
+1. add teacher designation alter models and forms and displays  done
+2. add room type same as above done
+3. rename max_numb_students to credits same as above done
+4. explain to anand ks: remove widgets and just add sytling in da html page as done in the addCourses.html file
