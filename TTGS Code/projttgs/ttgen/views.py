@@ -240,7 +240,7 @@ class Schedule:
             # daylist=deptdic[d]
             # if(t not in daylist):
             #     self._numberOfConflicts += 1
-
+            print(classes[i])
             for j in range(len(classes)):
                 if j >= i:
                     #print(classes[j].section_id)
@@ -252,8 +252,9 @@ class Schedule:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and (classes[i].section == classes[j].section) and  (classes[i].instructor == classes[j].instructor)):
-                        self._numberOfConflicts += 1
+                   # elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and (classes[i].section_id == classes[j].section_id) and  (classes[i].instructor == classes[j].instructor)):
+                     #   self._numberOfConflicts += 1
+                      #  print(classes[i].meeting_time.time,classes[j].meeting_time.time)
                        
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
@@ -376,8 +377,27 @@ def timetable(request):
         population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
         schedule = population.get_schedules()[0].get_classes()
 
+
+    timings_list = [[''],['7:30 - 8:30'],['8:30 - 9:30'], ['9:30 - 10:30'], ['11:00 - 11:50'], ['11:50 - 12:40'], ['12:40 - 1:30'], ['2:30 - 3:30'], ['3:30 - 4:30'], ['4:30 - 5:30']]
+    days_list = [['MON'], ['TUE'], ['WED'], ['THR'], ['FRI']]
+
+    t = [ ["-"] * (len(timings_list)  - 1) for i in range(len(days_list))]
+    t.insert(0, timings_list)
+    for i in range(1, len(t)):
+        t[i].insert(0, days_list[i - 1])
+
+    timings_list_map = {'': 0, '7:30 - 8:30': 1, '8:30 - 9:30': 2, '9:30 - 10:30': 3, '11:00 - 11:50': 4, '11:50 - 12:40': 5, '12:40 - 1:30':6,'2:30 - 3:30': 7, '3:30 - 4:30': 8, '4:30 - 5:30': 9}
+    days_list_map = {'MON': 1, 'TUE': 2, 'WED': 3, 'THR': 4, 'FRI': 5}
+
+    for i in schedule:
+        t[days_list_map[i.meeting_time.day]][timings_list_map[i.meeting_time.time]] = [i.course.course_name, i.room.r_number, i.instructor.name]
+
+
     return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
-                                              'times': MeetingTime.objects.all()})
+                                              'times': MeetingTime.objects.all(), 'timetable': t})
+
+    #return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
+    #                                          'times': MeetingTime.objects.all()})
 
 ############################################################################
 
