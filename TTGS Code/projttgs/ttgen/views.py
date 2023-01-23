@@ -44,52 +44,22 @@ timings ={
         "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
     }
 }
-# IS_SEM_3 = {
-#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "TUE": ["8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "WED": ["8:30-9:30","9:30-10:30"],
-#     "THR": ["7:30-8:30","8:30-9:30","9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "SAT": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"]
+
+
+# timing_map= {
+# "7:30 - 8:30": 1,
+# "8:30 - 9:30":2,
+# "9:30 - 10:30":3,
+# "11:00 - 11:50":4,
+# "11:50 - 12:40":5,
+# "12:40 - 1:30":6,
+# "2:30-3:30":7,
+# "3:30-4:30":8,
+# "4:30-5:30":9
 # }
-# #timings.append(IS_SEM_3)
-
-# IS_SEM_5 = {
-#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-#     "TUE": ["7:30-8:30","8:30-9:30"],
-#     "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-#     "THR": ["11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "FRI": ["9:30-10:30","11:00-11:50","11:50-12:40","12:40-1:30"],
-#     "SAT":[]
-# }
-# #timings.append(IS_SEM_5)
 
 
-# IS_SEM_7 = {
-#     "MON": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-#     "TUE": [],
-#     "WED": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30","4:30-5:30"],
-#     "THR": ["8:30-9:30","9:30-10:30"],
-#     "FRI": ["11:00-11:50","11:50-12:40","12:40-1:30","2:30-3:30","3:30-4:30"],
-#     "SAT": ["11:00-11:50","11:50-12:40","12:40-1:30"]
-# }
-#timings.append(IS_SEM_7)
 
-
-# to find: if IS_SEM_3 has a 7:30 to 8:30 class on MON:
-# required_dict=timings[timings.index("IS_SEM_3")] 
-# required_day_timings= required_dict["MON"]
-# required_bool_time= needed_time in required_day_timings
-# #
-# print ("hurray")
-#
-
-
-#
-# 
-# sample = MeetingTime.objects.filter(day=DAY,time=Sweet_spot)
-# 
-# 
 
 
 
@@ -147,7 +117,7 @@ class Schedule:
             # print("Here are the credits")
             # print(courses[0].credits)
             #for course in courses:
-            #    n+=int(course.credits) 
+            #    n+=int(course.credits)
             if n <= len(MeetingTime.objects.all()):
                 courses = dept.courses.all()
                 for course in courses:
@@ -157,41 +127,6 @@ class Schedule:
                         newClass = Class(self._classNumb, dept, section.section_id, course)
                         self._classNumb += 1
                         flag=1
-                       # print(flag)
-                        #flag+=1
-                        # while (flag):
-                        #     temp_timing_obj = data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]
-                        #     dict_of_sem = timings[dept.dept_name]
-                        #     day_list= dict_of_sem[temp_timing_obj.day]
-                        #     if temp_timing_obj.time in day_list:
-                        #         newClass.set_meetingTime(temp_timing_obj)
-                        #         flag=0
-                    #     DAY, DAY_TIMINGS = random.choice(list(timings[dept.dept_name].items()))
-                    #     print(DAY)
-                    #     Sweet_spot = random.choice(DAY_TIMINGS)
-                    #    # print("yay while loop!")
-                    #     print(Sweet_spot)
-                    #     newClass.set_meetingTime(MeetingTime.objects.filter(day=DAY,time=Sweet_spot))
-
-                        # allmeetingtimes= MeetingTime.objects.all()
-                        # avbldays=[]
-                        # for timing in allmeetingtimes:
-                        #     avbldays.append(timing.day)
-                        # randomday= random.choice(avbldays)
-                        # avbldays=list(set(avbldays))
-                        # #print(avbldays)
-                        # semdict= timings[dept.dept_name]
-                        # #print(sem_dict)
-                        # daylist=semdict[randomday]
-                        # #print(day_list)
-                        # reqrandomtime= random.choice(daylist)
-                        # #print(randomday,semdict,reqrandomtime)
-                        # testobj=MeetingTime.objects.filter(time=reqrandomtime,day=randomday)
-                        # print(testobj)
-                        
-                        # #newClass.set_meetingTime(testobj)
-                        # y=data.get_meetingTimes()
-                        # print(y)
                         x=data.get_meetingTimes()[rnd.randrange(0, len(MeetingTime.objects.all()))]
                         #print(x)
                         newClass.set_meetingTime(x)
@@ -240,9 +175,9 @@ class Schedule:
             # daylist=deptdic[d]
             # if(t not in daylist):
             #     self._numberOfConflicts += 1
-            print(classes[i])
+            #print(classes[i])
             for j in range(len(classes)):
-                if j >= i:
+                if j > i:
                     #print(classes[j].section_id)
                     if (classes[i].meeting_time == classes[j].meeting_time) and \
                             (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
@@ -252,9 +187,32 @@ class Schedule:
                             self._numberOfConflicts += 1
                         if classes[i].course!=classes[j].course:
                             self._numberOfConflicts += 1
-                   # elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and (classes[i].section_id == classes[j].section_id) and  (classes[i].instructor == classes[j].instructor)):
-                     #   self._numberOfConflicts += 1
-                      #  print(classes[i].meeting_time.time,classes[j].meeting_time.time)
+                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and(classes[i].instructor == classes[j].instructor) and(classes[i].section_id != classes[j].section_id)and(classes[i].section== classes[j].section)):
+                        self._numberOfConflicts += 1
+                        # print(classes[i].meeting_time.time,classes[j].meeting_time.time)
+                        # print(classes[i].course,classes[j].course)
+                        # print(classes[i].instructor,classes[j].instructor)
+                        #print(classes[i].section_id,classes[j].section_id)
+                        #print(classes[i].section,classes[j].section) #section = F
+
+                    #elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and(classes[i].instructor == classes[j].instructor) and(classes[i].section_id != classes[j].section_id)):
+                    #    print("HI")
+                    # 
+                    #  if(abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])==1):
+                    # if((abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=7) or (abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=13)):
+                       # self._numberOfConflicts += 1
+                    #   
+                    #  elif(abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])>5):
+                       # self._numberOfConflicts += 1
+                    # 
+                 
+                    # #
+                  # fix the gaps 
+                  # 
+                  # ###  
+
+
+
                        
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
