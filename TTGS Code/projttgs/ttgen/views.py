@@ -45,18 +45,19 @@ timings ={
     }
 }
 
-
-# timing_map= {
-# "7:30 - 8:30": 1,
-# "8:30 - 9:30":2,
-# "9:30 - 10:30":3,
-# "11:00 - 11:50":4,
-# "11:50 - 12:40":5,
-# "12:40 - 1:30":6,
-# "2:30-3:30":7,
-# "3:30-4:30":8,
-# "4:30-5:30":9
-# }
+teachers_set=set()
+teachers_list=list()
+timing_map= {
+"7:30 - 8:30": 1,
+"8:30 - 9:30":2,
+"9:30 - 10:30":3,
+"11:00 - 11:50":4,
+"11:50 - 12:40":5,
+"12:40 - 1:30":6,
+"2:30 - 3:30":7,
+"3:30 - 4:30":8,
+"4:30 - 5:30":9
+}
 
 
 
@@ -189,27 +190,14 @@ class Schedule:
                             self._numberOfConflicts += 1
                     elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and(classes[i].instructor == classes[j].instructor) and(classes[i].section_id != classes[j].section_id)and(classes[i].section== classes[j].section)):
                         self._numberOfConflicts += 1
-                        # print(classes[i].meeting_time.time,classes[j].meeting_time.time)
-                        # print(classes[i].course,classes[j].course)
-                        # print(classes[i].instructor,classes[j].instructor)
-                        #print(classes[i].section_id,classes[j].section_id)
-                        #print(classes[i].section,classes[j].section) #section = F
-
-                    #elif((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time!=classes[j].meeting_time.time) and(classes[i].instructor == classes[j].instructor) and(classes[i].section_id != classes[j].section_id)):
-                    #    print("HI")
-                    # 
-                    #  if(abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])==1):
-                    # if((abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=7) or (abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=13)):
-                       # self._numberOfConflicts += 1
-                    #   
-                    #  elif(abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])>5):
-                       # self._numberOfConflicts += 1
-                    # 
-                 
-                    # #
-                  # fix the gaps 
-                  # 
-                  # ###  
+                      
+                    elif((classes[i].meeting_time.day==classes[j].meeting_time.day)and(classes[i].instructor == classes[j].instructor)and(abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])==1)):
+                        if((abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=7) or (abs(timing_map[classes[i].meeting_time.time]+timing_map[classes[j].meeting_time.time])!=13)):
+                            self._numberOfConflicts += 1
+                      
+                    elif( (classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor == classes[j].instructor )and (abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])>5)):
+                       self._numberOfConflicts += 1
+                  
 
 
 
@@ -319,6 +307,8 @@ def context_manager(schedule):
         cls['instructor'] = f'{classes[i].instructor.name} ({classes[i].instructor.uid})'
         cls['meeting_time'] = [classes[i].meeting_time.pid, classes[i].meeting_time.day, classes[i].meeting_time.time]
         context.append(cls)
+        #teachers.add(classes[i].instructor.name)
+    #print(teachers)
     return context
 
 
@@ -349,7 +339,9 @@ def timetable(request):
 
     for i in schedule:
         t[days_list_map[i.meeting_time.day]][timings_list_map[i.meeting_time.time]] = [i.course.course_name, i.room.r_number, i.instructor.name]
-
+        teachers_set.add(i.instructor.name)
+    teachers_list=list(teachers_set)
+    #print(teach)
 
     return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
                                               'times': MeetingTime.objects.all(), 'timetable': t})
@@ -383,9 +375,12 @@ def contact(request):
         send_mail('TTGS Contact',
                   message,
                   settings.EMAIL_HOST_USER,
-                  ['codevoid12@gmail.com'],
+                  ['bckoduru@gmail.com'],
                   fail_silently=False)
     return render(request, 'contact.html', {})
+
+def teacher_home(request):
+    return render(request,'help.html')
 
 #################################################################################
 

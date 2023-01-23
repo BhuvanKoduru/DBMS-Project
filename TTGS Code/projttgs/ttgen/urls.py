@@ -39,5 +39,5 @@ urlpatterns = [
 
     path('timetable_generation/', views.timetable, name='timetable'),
     path('timetable_generation/render/pdf', views.Pdf, name='pdf'),
-
+    path('teacher',views.teacher_home,name='teacher_home')
 ]
