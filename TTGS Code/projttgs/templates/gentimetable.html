@@ -222,22 +222,25 @@
     </div>
     <br />
     <center>
-    <div class="tt-table">
-      <table style="border: 10px groove black; margin: 15px;">
-        {% for n in timetable %}
-        <tr>
-          {% for line in n %}
-          <td>
-            {% for data in line %} {{data}}
-            <br />
+      <div class="tt-table">
+        {% for key, value in timetable.items %}
+        <h2>{{ key }}</h2>
+        <table style="border: 10px groove black; margin: 15px">
+          {% for n in value %}
+          <tr>
+            {% for line in n %}
+            <td>
+              {% for data in line %} {{data}}
+              <br />
+              {% endfor %}
+            </td>
             {% endfor %}
-          </td>
-          {% endfor %}
-        </tr>
+          </tr>
 
+          {% endfor %}
+        </table>
         {% endfor %}
-      </table>
-    </div>
+      </div>
     </center>
   </body>
 </html>
