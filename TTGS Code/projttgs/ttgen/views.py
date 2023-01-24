@@ -78,7 +78,7 @@ class Data:
 
     def get_courses(self): return self._courses
 
-    def get_depts(self): return self._depts\
+    def get_depts(self): return self._depts
 
     def get_meetingTimes(self): return self._meetingTimes
 
@@ -341,13 +341,14 @@ def timetable(request):
         days_list_map = {'MON': 1, 'TUE': 2, 'WED': 3, 'THR': 4, 'FRI': 5,'SAT':6}
 
         for i in schedule:
-            t[days_list_map[i.meeting_time.day]][timings_list_map[i.meeting_time.time]] = [i.course.course_name, i.room.r_number, i.instructor.name]
-            teachers_set.add(i.instructor.name)
+            if i.section == section.section_id:
+                t[days_list_map[i.meeting_time.day]][timings_list_map[i.meeting_time.time]] = [i.course.course_name, i.room.r_number, i.instructor.name]
+                teachers_set.add(i.instructor.name)
 
         tt[str(section.section_id) + " " + str(section.department)] = t
     #teachers_list=list(teachers_set)
 
-    print(tt)
+    #print(tt)
   
     return render(request, 'gentimetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
                                               'times': MeetingTime.objects.all(), 'timetable': tt})
