@@ -197,6 +197,9 @@ class Schedule:
                       
                     elif( (classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].instructor == classes[j].instructor )and (abs(timing_map[classes[i].meeting_time.time]-timing_map[classes[j].meeting_time.time])>5)):
                        self._numberOfConflicts += 1
+                    elif ((classes[i].meeting_time.day==classes[j].meeting_time.day) and (classes[i].meeting_time.time==classes[j].meeting_time.time)and (classes[i].section_id != classes[j].section_id) and (classes[i].room == classes[j].room)):
+                       self._numberOfConflicts += 1
+
                   
 
 
