@@ -14,12 +14,12 @@
 </ol>
 <p>Constraints:</p>
 <ol>
-  <li>Rooms</li>
-  <li>Classrooms</li>
-  <li>Timings</li>
-  <li>Courses</li>
-  <li>Departments</li>
-  <li>Sections</li>
+  <li>No two classes occur in the same room</li>
+  <li>No teacher teaches any two classes at the same time</li>
+  <li>A teacher doesn't take more than one class per day per section</li>
+  <li>No teacher takes consecutive classes apart from before and after breaks. </li>
+  <li>No teacher teaches for more than 6 hours per day</li>
+  <li>No two classes happen at the same time for any section</li>
 </ol>
 <p>Upon successfull entry of the data into sqlite database, the user can navigate to the "Generate Timetable" page to start the process of generating the timetable. Upon successfull generation of the timetable the user can download the timetable as a PDF.</p>   
 
